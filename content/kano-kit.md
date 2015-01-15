@@ -1,0 +1,19 @@
+title: Kano Kit - a cute Raspberry Pi setup
+date: 2014-11-05
+slug: kano-kit
+category: misc
+tags: raspberry pi, linux, arm
+
+![Kano Kit](/images/kano-kit/kano-1.jpg)
+
+I just received my new toy, the [Kano Kit](http://kano.me/), which consists of a Raspberry Pi, a case for it, a keyboard, a USB WiFi dongle, speaker and charger (plus asorted cables).
+
+I have to be honest, I didn't really think about what I'd use it for for too much, I just really liked the keyboard (it can be used either as bluetooth keyboard or as an RF one via the included adaptor). It also has the advantage of being compatible with both my Nexus 5 and 7, which means that if I have some big email to type I can just use that instead of the on-screen keyboard.
+
+<iframe class="imgur-album" width="100%" height="550" frameborder="0" src="//imgur.com/a/2HhAT/embed?background=f2f2f2&text=1a1a1a&link=4e76c9"></iframe>
+
+The Kano comes with its own Linux distribution, but I didn't get to try that as I have no screen to connect it to. Instead, I just installed Raspbian on the Kano memory card (after taking a backup of the current OS) and then remotely configured the Pi (thank god for DHCP and SSH).
+
+The plan now is to connect an external drive to it and use it as a DLNA/UPnP server to stream TV shows and movies to my laptop and tablet, as well as set it up to automagically acquire the new episodes once they're available.
+
+I'll write more about this little experiment as it goes on, but until then I still have some packages to install and configs to make.
