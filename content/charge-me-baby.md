@@ -9,7 +9,8 @@ You know, with the number of smartphones increasing in the market I see more and
 ![featureimage](/images/charge-me-baby/batteries.jpg)
 
 ---
-Batteries in an ideal world
+
+###Batteries in an ideal world
 
 When talking about batteries most of the confusion here comes from how differently battery packs are treated to single batteries. What you need to remember is that phones use single batteries.
 
@@ -23,7 +24,7 @@ However, the difference between CC and CV is only really evident after some year
 
 ---
 
-Let's talk about myths
+###Let's talk about myths
 
 The truth is that it doesn't matter if the phone is reading 0, 20, 40 or 50% when you charge it. You're in the CC charge domain regardless. 0% on an Android is usually about 3.0V. This is purely arbitrary and chosen as a balance between battery longevity and battery capacity: It's configurable in the power management IC (set at factory, not aware of any devices which allow it to be changed in the field). Lithium polymer/ion cells are very unhappy below about 2.8V, they go that low and they will suffer greatly.
 

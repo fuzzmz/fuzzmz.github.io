@@ -27,13 +27,13 @@ So, without further ado, here are the guidelines we try to adhere to:
 
 ---
 
-1. Systems are provisioned via code
+###1. Systems are provisioned via code
 
 This is the foundation of everything. Whether it's Chef or Puppet, bash scripts or even VM snapshots, every developer's time and skills should be more valuable than just manually provisioning stuff. Couple that with the inherent systems documentation that you get from reading Chef cookbooks for example and you've got the foundational building block for everything else you do. You just shouldn't *have* time to do otherwise.
 
 ---
 
-2. Engineers with production responsibilities are embedded with feature teams
+###2. Engineers with production responsibilities are embedded with feature teams
 
 Despite having a team dedicated to shipping the final product (hi to all of the release engineering guys out there), they don't have time to ship everybody else's stuff, too.
 
@@ -41,7 +41,7 @@ You hire smart people everywhere so who better to know the requirements, pitfall
 
 ---
 
-3. Monitoring and alert configuration is centralized and easily accessible to the people who need them
+###3. Monitoring and alert configuration is centralized and easily accessible to the people who need them
 
 Centralized logging and monitoring of system statistics has two major pluses: developer velocity and system self-documentation. SSH may be necessary in the odd edge case, but if somebody has to log into a machine just to read their logs, they're going to be slower when they do it or not do it at all. Make sure that your devs can readily know when something's wrong, or when a fault somewhere else in the .org might affect them.
 
@@ -49,7 +49,7 @@ Also, every data point counts when it comes to logging, so having the record of 
 
 ---
 
-4. Systems are self-healing without human involvement
+###4. Systems are self-healing without human involvement
 
 Do you enjoy waking up to a log full of errors? Or emails from colleagues bitching that something isn't quite working?
 
@@ -61,7 +61,7 @@ An issue that needs to be escalated out-of-hours to a developer should require a
 
 ---
 
-5. Everyday administration tasks are handled through automated systems
+###5. Everyday administration tasks are handled through automated systems
 
 I've heard this item expressed in an even more aggressive manner: *no developer should need SSH access to a production system*. I think that's overkill. No matter how much monitoring you stack up, there are some issues that require getting in there and perturbing electrons directly.
 
@@ -69,13 +69,13 @@ But everyday tasks? See point 4. You've got if-then machines all over the place.
 
 ---
 
-6. Configuration data is stored in an auditable central repository
+###6. Configuration data is stored in an auditable central repository
 
 This should be pretty explicit. Your Chef or Puppet configs? Store them in git, or whatever else DCVS you want. Your build scripts? Git. Your per-app configs? Git. And so on and so forth.
 
 ---
 
-7. Applications are presented with a fresh, consistent runtime regardless of deployment environment
+###7. Applications are presented with a fresh, consistent runtime regardless of deployment environment
 
 Now, I also handle the installers for the products I cover. And let me tell you, installing on Linux is a bitch, especially when you can't use native packages and have lots and lots of dependencies.
 
@@ -85,7 +85,7 @@ There's nothing worse than plopped down on a machine that's been running for a y
 
 ---
 
-8. Any system that must be deployed more often than monthly does so faster than you can get a cup of coffee
+###8. Any system that must be deployed more often than monthly does so faster than you can get a cup of coffee
 
 Please note: this isn't an excuse for really slow coffee machines.
 
