@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 
 AUTHOR = 'fuzzmz'
 SITENAME = 'QWERTY'
-SITEURL = 'https://fuzzmz.github.io'
+SITEURL = 'https://fuzz.me.uk'
 SITESUBTITLE = 'ramblings on tech, life, and randomness'
 
 PATH = 'content'
@@ -19,7 +19,7 @@ RELATIVE_URLS = True
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
 FEED_ATOM = 'fuzzmeuk/main.xml'
-FEED_DOMAIN = 'http://feeds.feedburner.com'
+FEED_DOMAIN = 'https://feeds.feedburner.com'
 CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
