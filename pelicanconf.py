@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 
 AUTHOR = 'fuzzmz'
 SITENAME = 'QWERTY'
-SITEURL = ''
+SITEURL = 'https://fuzzmz.github.io'
 SITESUBTITLE = 'ramblings on tech, life, and randomness'
 
 PATH = 'content'
@@ -18,13 +18,19 @@ RELATIVE_URLS = True
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
+FEED_ATOM = 'fuzzmeuk/main.xml'
+FEED_DOMAIN = 'http://feeds.feedburner.com'
 CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
 #static
-STATIC_PATHS = ['images']
+STATIC_PATHS = ['images',
+                'CNAME']
+EXTRA_PATH_METADATA = {
+                        'CNAME': {'path': 'CNAME'}
+                      }
 
 #Pagination
 #DEFAULT_PAGINATION = 3
@@ -62,6 +68,7 @@ SOCIAL = (
             ('GitHub', 'https://github.com/fuzzmz'),
             ('Google+', 'https://plus.google.com/+serbanconstantin'),
             # ('RSS', SITEURL + '/' + FEED_ALL_ATOM),
+            ('RSS', 'https://feeds.feedburner.com/fuzzmeuk'),
             ('EMAIL', 'mailto:serban.constantin@gmail.com'),
           )
 
@@ -69,8 +76,8 @@ SOCIAL = (
 SHARE = True
 
 #disqus
-# DISQUS_SITENAME = 'winlu'
-# DISQUS_LOAD_LATER = True
+DISQUS_SITENAME = 'fuzzmeuk'
+DISQUS_LOAD_LATER = False
 
 #typography
 TYPOGRIFY = True
