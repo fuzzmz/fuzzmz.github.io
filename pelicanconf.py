@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 
 AUTHOR = 'fuzzmz'
 SITENAME = 'QWERTY'
-SITEURL = 'https://fuzz.me.uk'
+SITEURL = 'http://fuzz.me.uk'
 SITESUBTITLE = 'ramblings on tech, life, and randomness'
 
 PATH = 'content'
@@ -14,12 +14,12 @@ TIMEZONE = 'Europe/Bucharest'
 DEFAULT_LANG = 'en'
 
 # Uncomment following line if you want document-relative URLs when developing
-RELATIVE_URLS = True
+RELATIVE_URLS = False
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
 FEED_ATOM = 'fuzzmeuk/main.xml'
-FEED_DOMAIN = 'https://feeds.feedburner.com'
+FEED_DOMAIN = 'http://feeds.feedburner.com'
 CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
@@ -77,7 +77,7 @@ SHARE = True
 
 #disqus
 DISQUS_SITENAME = 'fuzzmeuk'
-DISQUS_LOAD_LATER = False
+DISQUS_LOAD_LATER = True
 
 #typography
 TYPOGRIFY = True
