@@ -8,7 +8,7 @@ tags: cartoons, animation, TV shows
 
 If the title doesn't say anything to you then I think it's best to skip this article; otherwise be warned that what follows contains things which could be classified as spoilers.
 
-Huh, what is this?
+###Huh, what is this?
 
 I admit, I was a pretty big fan of the Powerpuff Girls back in the day. Everything in the show, from the graphic style up to the voices and music was just amazing, so when I got the opportunity to watch the Powerpuff Girls reboot special, [Dance Pantsed](http://trakt.tv/show/the-powerpuff-girls/specials/episode/8), I was taken aback.
 
@@ -16,7 +16,7 @@ Out with the cutesy graphics and in with an edgy-er, more post-generation X styl
 
 ---
 
-Something missing
+###Something missing
 
 ![something missing](/images/powerpuff-girls/powerpuff_missing.png)
 
@@ -28,7 +28,7 @@ Don't get me wrong, Blossom, Bubbles and Buttercup are still great characters, i
 
 ---
 
-Come play with us!
+###Come play with us!
 
 ![play with us](/images/powerpuff-girls/powerpuff_come_play.png)
 
@@ -40,7 +40,7 @@ Just like the old Cartoon Network series had layers upon layers (think here of C
 
 ---
 
-It's all about the love
+###It's all about the love
 
 The truth is that despite whatever I, or you, might think of this reboot, it was clearly made with a lot of love, for both the characters and history of the show, as well as for us, the viewers, so go ahead and watch it.
 

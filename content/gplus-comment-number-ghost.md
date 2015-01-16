@@ -13,7 +13,7 @@ Me, being the Google fanboy that I am decided to go with using Google+ for the c
 This turns out to be not such a hard thing to implement, though it requires some more steps than just modifying the theme template.
 
 
-1. Linking your Google+ profile to the content
+###1. Linking your Google+ profile to the content
 
 The first step we need to take is to link our Google+ profile to the website we blog on.
 
@@ -40,7 +40,7 @@ To check that your content is now linked to Google+ you can go to the [structure
 ![Authorship is working](/images/gplus-comment-number-ghost/autorship.png)
 
 
-2. Insert the comments counter
+###2. Insert the comments counter
 
 Now that we have our blog and Google+ account linked up, it's time to actually display the number of comments for each article.
 

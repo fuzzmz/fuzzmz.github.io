@@ -12,7 +12,7 @@ No, really. With the advent of mobile devices we are more connected than ever to
 
 ---
 
-Available/Busy/Away
+###Available/Busy/Away
 
 
 In the olden days, when geeks were tied to their computers, IM programs came with this wonderful concept of presence indicators such as *available*, *busy* or *away*.
@@ -21,7 +21,9 @@ They were meant let the other people around know if you were or not paying atten
 
 But as time passed and people got more and more used to IMing the relevance of the presence indicator diminished; it didn't matter if you were available or busy because 99% of the time you'd end up with a `hey, got a minute?` on your screen. Not even the mighty *invisible* managed to keep them away as services evolved to store offline messages until you'd get back online.
 
-Social anxiety
+---
+
+###Social anxiety
 
 
 And because just having people ignore your presence indicator wasn't enough, some insidious developers decided that it would be a good idea to take things a step further and tell you if the other person closed the conversation window.
@@ -45,7 +47,9 @@ This leads to awkward situations when you don't close the window immediately aft
 
 It also makes people assume that just because that indicator is shown (which, unless you're actually offline, is always displayed) you've read the message and are starting a lengthy response to his 3 word query, in turn leading to presence indicators being even more worthless.
 
-Always-connected
+---
+
+###Always-connected
 
 
 But here we are now, with mobile phones and data plans in our pockets, a complete disregard for presence indicators and always-on IM clients.
@@ -73,7 +77,9 @@ But what's curious is that even the darlings of the IM world, Apple's iMessage a
 
 ![WhatsApp contact list](/images/presence-indicators/whatsapp.png)
 
-The future of presence
+---
+
+###The future of presence
 
 
 Presence needs to change. it needs to be less about idle, away, etc. and more about where it learns how to notify you.

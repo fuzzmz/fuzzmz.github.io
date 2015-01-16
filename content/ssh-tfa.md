@@ -14,7 +14,7 @@ Fortunately Google offers a nice Authenticator application for smartphones as we
 
 ---
 
-Installing google-authenticator PAM
+###Installing google-authenticator PAM
 
 I'm running Debian so this guide applies to Debian and Debian-based distributions.
 
@@ -39,7 +39,7 @@ Now that we've got everything installed it's time to actually set up the applica
 
 ---
 
-Setting up the OS to use Challenge Response Authentication
+###Setting up the OS to use Challenge Response Authentication
 
 
 Once the previous step is done we need to let the OS know that is has to use the newly installed PAM module. To do this we need to edit the ```/etc/pam.d/common-auth``` (by running ```sudo vim /etc/pam.d/common-auth``` for example) and adding the following line:
@@ -67,6 +67,6 @@ The next time you'll log in you should be greeted with a message asking for a ve
 
 ---
 
-Bonus points
+###Bonus points
 
 One advantage to this is the fact that even if you log in using a certificate (which bypasses the two-factor authentication) you are still asked for a verification code when trying to elevate to root via sudo for example.
