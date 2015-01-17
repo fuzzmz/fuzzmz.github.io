@@ -2,7 +2,7 @@ title: In transit
 date: 2013-11-10
 slug: in-transit
 category: misc
-tags: rants
+tags: rants, self
 
 I enjoy flying. I like spending time in airports, going through security, watching the people wait and wonder about where they're headed. I even have a sort of masochistic love for planes despite most of them having cramped seats.
 
