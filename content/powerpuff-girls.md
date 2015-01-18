@@ -3,6 +3,7 @@ date: 2014-02-27
 slug: powerpuff-girls
 category: misc
 tags: cartoons, animation, TV shows
+summary: If the title doesn't say anything to you then I think it's best to skip this article; otherwise be warned that what follows contains things which could be classified as spoilers. I dive into the latest and newest Powerpuff Girls episode.
 
 ![featureimage](/images/powerpuff-girls/powerpuff_intro.jpg)
 

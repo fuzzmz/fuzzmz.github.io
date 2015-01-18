@@ -3,12 +3,13 @@ date: 2014-02-25
 slug: metric-hdd
 category: misc
 tags: storage, maths
+summary: I got myself a really nice Samsung SSD to replace the slow as hell 5400RPM WD I had as my main drive in my laptop, and seeing the size got me to thinking about base conversion. Let's do conversions!
 
 ![featureimage](/images/metric-hdd/samsung_ssd.jpg)
 
 I got myself a really nice Samsung SSD to replace the slow as hell 5400RPM WD I had as my main drive in my laptop, and seeing the size got me to thinking about base conversion.
 
- Let's do conversions!
+Let's do conversions!
 <div class="container">
 <blockquote>"Real hardware works in base two, hard drive marketing fluff in base 10. That's all the context knowledge you need."</blockquote>
 <div class="reference">

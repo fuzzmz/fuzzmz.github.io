@@ -3,6 +3,7 @@ date: 2014-11-05
 slug: kano-kit
 category: misc
 tags: raspberry pi, linux, arm
+Summary: I just received my new toy, the [Kano Kit](http://kano.me/), which consists of a Raspberry Pi, a case for it, a keyboard, a USB WiFi dongle, speaker and charger (plus asorted cables).
 
 ![Kano Kit](/images/kano-kit/kano-1.jpg)
 
