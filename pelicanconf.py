@@ -33,7 +33,6 @@ EXTRA_PATH_METADATA = {
                       }
 
 #Pagination
-#DEFAULT_PAGINATION = 3
 DEFAULT_PAGINATION = 8
 
 #theme
@@ -50,7 +49,6 @@ ARTICLE_SAVE_AS = '{slug}/index.html'
 
 #plugins
 PLUGIN_PATHS = ['../pelican-plugins', '../pelican-plugins-custom' ]
-PLUGINS = ['render_math' , 'sort_tags' , 'bootstrapify', 'toc']
 PLUGINS = ['render_math' , 'sort_tags' , 'bootstrapify', 'toc', 'pelicanfly', 'clean_summary']
 
 #dateformat
