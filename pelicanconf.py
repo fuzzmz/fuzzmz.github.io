@@ -51,6 +51,7 @@ ARTICLE_SAVE_AS = '{slug}/index.html'
 #plugins
 PLUGIN_PATHS = ['../pelican-plugins', '../pelican-plugins-custom' ]
 PLUGINS = ['render_math' , 'sort_tags' , 'bootstrapify', 'toc']
+PLUGINS = ['render_math' , 'sort_tags' , 'bootstrapify', 'toc', 'pelicanfly', 'clean_summary']
 
 #dateformat
 DEFAULT_DATE_FORMAT = '%Y-%m-%d'
