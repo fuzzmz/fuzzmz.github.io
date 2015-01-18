@@ -3,6 +3,7 @@ date: 2014-03-08
 slug: charge-me-baby
 category: misc
 tags: batteries, charging
+summary: So how should people treat their smartphone batteries and charging habits? I'll try and debunk some myths and spread some knowledge.
 
 You know, with the number of smartphones increasing in the market I see more and more people spewing bullshit about batteries and how you should charge them.
 
