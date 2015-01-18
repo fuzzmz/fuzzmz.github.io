@@ -1,9 +1,8 @@
 title: Geek at the gym
-date: 2015-01-19
+date: 2015-01-18 21:22
 slug: geek-at-gym
 category: debug
 tags: python, coding
-Status: draft
 
 What happens when a geek wants to go to a specific gym class but always finds it fully booked? Well, I decided to abuse their reservation page and write a quick and dirty script which tries to make a reservation.
 
