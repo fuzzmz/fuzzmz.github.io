@@ -34,6 +34,7 @@ EXTRA_PATH_METADATA = {
 
 #Pagination
 #DEFAULT_PAGINATION = 3
+DEFAULT_PAGINATION = 8
 
 #theme
 THEME = "../pelican-themes/pelican-twitchy"
