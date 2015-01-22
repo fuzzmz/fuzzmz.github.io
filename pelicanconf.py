@@ -14,7 +14,7 @@ TIMEZONE = 'Europe/Bucharest'
 DEFAULT_LANG = 'en'
 
 # Uncomment following line if you want document-relative URLs when developing
-RELATIVE_URLS = False
+RELATIVE_URLS = True
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
@@ -69,7 +69,6 @@ SOCIAL = (
             ('Google+', 'https://plus.google.com/+serbanconstantin'),
             # ('RSS', SITEURL + '/' + FEED_ALL_ATOM),
             ('RSS', 'https://feeds.feedburner.com/fuzzmeuk'),
-            ('EMAIL', 'mailto:serban.constantin@gmail.com'),
           )
 
 # Share
