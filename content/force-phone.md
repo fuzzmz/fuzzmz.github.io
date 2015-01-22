@@ -1,4 +1,4 @@
-title: May the force (not) be with your phone
+title: Force vs. phone
 date: 2015-01-22 20:30
 slug: force-phone.md
 category: misc
