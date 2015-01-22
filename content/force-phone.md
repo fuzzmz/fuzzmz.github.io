@@ -1,6 +1,6 @@
 title: Force vs. phone
 date: 2015-01-22 20:30
-slug: force-phone.md
+slug: force-phone
 category: misc
 tags: physics, phones
 summary: I've been recently reading how it's supposedly better to have a phone with a removable battery, because in case of a fall energy is dissipated by the popping back case.
