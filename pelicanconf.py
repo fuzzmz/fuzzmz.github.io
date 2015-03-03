@@ -75,8 +75,8 @@ SOCIAL = (
 SHARE = True
 
 #disqus
-DISQUS_SITENAME = 'fuzzmeuk'
-DISQUS_LOAD_LATER = True
+DISQUS_SITENAME = ''
+DISQUS_LOAD_LATER = False
 
 #typography
 TYPOGRIFY = True
