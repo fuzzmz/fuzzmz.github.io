@@ -36,7 +36,7 @@ EXTRA_PATH_METADATA = {
 DEFAULT_PAGINATION = 8
 
 #theme
-THEME = "../pelican-themes/pelican-twitchy"
+THEME = "./static_deps/pelican-themes/pelican-twitchy"
 BOOTSTRAP_THEME = 'sandstone'
 PYGMENTS_STYLE = 'colorful'
 
@@ -48,7 +48,7 @@ ARTICLE_URL = '{slug}/'
 ARTICLE_SAVE_AS = '{slug}/index.html'
 
 #plugins
-PLUGIN_PATHS = ['../pelican-plugins', '../pelican-plugins-custom' ]
+PLUGIN_PATHS = ['./static_deps/pelican-plugins', './static_deps/pelican-plugins-custom' ]
 PLUGINS = ['render_math' , 'sort_tags' , 'bootstrapify', 'toc', 'pelicanfly', 'clean_summary']
 
 #dateformat
