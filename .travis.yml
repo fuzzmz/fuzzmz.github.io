@@ -6,7 +6,7 @@ branches:
 install: pip install -r requirements.txt
 script:
 - make publish
-- make github 2> /dev/null
+- make github
 env:
   global:
   - secure: ihJS9OBD54AeexsIpnR82L7Ju8xnqAqfqvO+lPGMvMaH/CC+6pgch/3Eo4smastD2S4QKZrM1Pg9RhVyeFIOp+ykXxsHlcTcbh16uMy1Fe4CWwhWgkARrxHBWIMDBjH8NATRkF+XevuAbOirDZ/zZxZwEhTzROdEFS211E9Sxkc=
