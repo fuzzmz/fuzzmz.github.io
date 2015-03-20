@@ -1,0 +1,12 @@
+language: python
+python:
+- '2.7'
+branches:
+  only: source
+install: pip install -r requirements.txt
+script:
+- make publish
+- make github 2> /dev/null
+env:
+  global:
+  - secure: VDt4FlBzB1nQ01DXXtB2eV1eyrSdZ5E+ZKyQluGmV+5PN+hf1885xcftTxFdi/TTOZJdNIh4+qKjCda2ytxfyQKX6L4q4G4EoTAKQS+CMhABUfb/vcTGJdCggNG5Nw8BI819XJIrC+ZXpwSqIS1R5f8vwcrMrAmoH/xFjeCzQ1s=
