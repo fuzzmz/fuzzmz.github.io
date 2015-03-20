@@ -13,4 +13,4 @@ publish:
 
 github:
 	ghp-import -n -b master $(OUTPUTDIR)
-	git push -fq https://${GH_TOKEN}@github.com/$(TRAVIS_REPO_SLUG).git master
+	@git push -fq https://${GH_TOKEN}@github.com/$(TRAVIS_REPO_SLUG).git master
