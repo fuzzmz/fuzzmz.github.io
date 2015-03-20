@@ -2,11 +2,12 @@ language: python
 python:
 - '2.7'
 branches:
-  only: source
+  only:
+  - source
 install: pip install -r requirements.txt
 script:
 - make publish
-- 'make github 2> /dev/null'
+- make github 2> /dev/null
 env:
   global:
-  - secure: hMNTFmVyu6z0HbkjjNc3URaNuMJwXXAgQy/A0aKZxkCZD4zl8XY0jOzLmKMZXLK/jvpVS11TthrUgoXKWeOTVv/Q3dtXbZb0U9XH0N8JplNJvikuh6ywa6RBsMIm2pH2JIh05F3e0rT3TVwyC8mpMe2+3MDvbs5EHjySzovuZq8=
+  - secure: ceYFQT7GbNQiFQ3K3IRxkt1vt4n/wyJ1TjQqd7MUy5u0uM8b2W6LayqmsEjGgjl86b+gpwEcNFQJOgdj+A6o5TEhaU6Df9AokprABgCaeS2c7XY0pHcHKvhwkWT4bJENwS2ThoT7nuStG9iQulnXEPEHL4G8Y9ee3msrY75+SMQ=
