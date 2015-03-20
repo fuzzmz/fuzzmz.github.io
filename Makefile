@@ -12,5 +12,5 @@ publish:
 	$(PELICAN) $(INPUTDIR) --debug --output $(OUTPUTDIR) --settings $(CONFFILE)
 
 github:
-	ghp-import -n -b master -m $(TRAVIS_COMMIT_DESCRIPTION) $(OUTPUTDIR)
+	ghp-import -n -b master $(OUTPUTDIR)
 	git push -fq https://${GH_TOKEN}@github.com/$(TRAVIS_REPO_SLUG).git master
