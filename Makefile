@@ -12,5 +12,8 @@ publish:
 	$(PELICAN) $(INPUTDIR) --debug --output $(OUTPUTDIR) --settings $(CONFFILE)
 
 github:
-	ghp-import -n $(OUTPUTDIR)
-	git push -fq https://${GH_TOKEN}@github.com/$(TRAVIS_REPO_SLUG).git master > /dev/null
+	cd $(OUTPUTDIR)
+	git init
+	git add .
+	git commit -m "New blog post"
+	git push -fq https://e4b434af975e4f9833cf1e8866029d11302aedfd@github.com/fuzzmz/fuzzmz.github.io.git master
