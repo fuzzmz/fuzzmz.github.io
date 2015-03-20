@@ -9,4 +9,4 @@ script:
 - make github 2> /dev/null
 env:
   global:
-  - secure: B8g4aKYSeTsC/VcikXZZdzJ0vKnmI0/7jwygrHlOWlRSpwDxQIdvrVvxBhPyPEbsztrHHn/5/r5mYZihOW/gAiXx86z+1T60Hu1QKJf5H7JW4YtxP70xtQxcc9TAXSkrc2h5BBXb80u+WXMVathI8O7rpqImilLEz6+li00C7fg=
+  - secure: ihJS9OBD54AeexsIpnR82L7Ju8xnqAqfqvO+lPGMvMaH/CC+6pgch/3Eo4smastD2S4QKZrM1Pg9RhVyeFIOp+ykXxsHlcTcbh16uMy1Fe4CWwhWgkARrxHBWIMDBjH8NATRkF+XevuAbOirDZ/zZxZwEhTzROdEFS211E9Sxkc=
