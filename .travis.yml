@@ -5,7 +5,7 @@ branches:
   only:
   - source
 before_install:
-  - "export TRAVIS_COMMIT_MSG=\"$(git log --format=%B -n 1)\""
+  - "export TRAVIS_COMMIT_MSG=\"$(git log --format=%B -n 1 | head -c23)\""
 install:
   - pip install -r requirements.txt
   - pip install git+https://github.com/fuzzmz/pelicanfly@font-awesome-4.3.0
