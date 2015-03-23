@@ -27,9 +27,11 @@ AUTHOR_FEED_RSS = None
 
 #static
 STATIC_PATHS = ['images',
-                'extra/CNAME']
+                'extra/CNAME',
+                'extra/robots.txt']
 EXTRA_PATH_METADATA = {
-                        'extra/CNAME': {'path': 'CNAME'}
+                        'extra/CNAME': {'path': 'CNAME'},
+                        'extra/robots.txt': {'path': 'robots.txt'}
                       }
 
 #Pagination
