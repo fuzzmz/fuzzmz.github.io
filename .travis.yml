@@ -4,10 +4,12 @@ python:
 branches:
   only:
   - source
-install: 
+install:
   - pip install -r requirements.txt
   - pip install git+https://github.com/fuzzmz/pelicanfly@font-awesome-4.3.0
 script:
+  - git config --global user.name "Serban Constantin"
+  - git config --global user.email serban.constantin@gmail.com
   - make publish
   - make github
 env:
