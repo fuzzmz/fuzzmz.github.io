@@ -5,6 +5,16 @@ INPUTDIR=$(BASEDIR)/content
 OUTPUTDIR=$(BASEDIR)/output
 CONFFILE=$(BASEDIR)/pelicanconf.py
 
+help:
+	@echo 'Makefile for a pelican Web site                                        '
+	@echo '                                                                       '
+	@echo 'Usage:                                                                 '
+	@echo '   make clean                       remove the generated files         '
+	@echo '   make publish                     generate using production settings '
+	@echo '   make serve                       serve site at http://localhost:8000'
+	@echo '   make github                      upload the web site via gh-pages   '
+	@echo '                                                                       '
+
 clean:
 	[ ! -d $(OUTPUTDIR) ] || rm -rf $(OUTPUTDIR)
 
