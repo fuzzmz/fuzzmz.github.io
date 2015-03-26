@@ -27,3 +27,5 @@ serve:
 github:
 	ghp-import -n -b master -m "${TRAVIS_COMMIT_MSG}" $(OUTPUTDIR)
 	@git push -fq https://${GH_TOKEN}@github.com/$(TRAVIS_REPO_SLUG).git master
+
+.PHONY: help clean publish serve github
