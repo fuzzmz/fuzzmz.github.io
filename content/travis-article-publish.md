@@ -4,6 +4,9 @@ slug: travis-article-publish
 category: how-to
 tags: git, Travis-CI, GitHub
 summary: Geeking out after switching back the blog to [Pelican][1] and hosting it on [GitHub Pages][2], I decided to set up automated publishing of the HTML content from the markdown articles without manually running Pelican on my own PC. So what better way to do this than plug everything into [Travis CI][3], because continuous integration doesn't automatically imply code.
+    [1]: https://github.com/getpelican/pelican "Static site generator that supports Markdown and reST syntax. Powered by Python."
+    [2]: https://pages.github.com/ "GitHub Pages"
+    [3]: https://travis-ci.org/ "Travis CI - Free Hosted Continuous Integration Platform for the Open Source Community"
 
 #Configuring the job
 
@@ -101,9 +104,6 @@ And that's it, now you just have to wait for the Travis CI build to take place, 
 
 Oh, and there's also an associated pull request for this article, :fa-code-fork: [add Travis-CI publishing article][10].
 
-[1]: https://github.com/getpelican/pelican "Static site generator that supports Markdown and reST syntax. Powered by Python."
-[2]: https://pages.github.com/ "GitHub Pages"
-[3]: https://travis-ci.org/ "Travis CI - Free Hosted Continuous Integration Platform for the Open Source Community"
 [4]: https://en.wordpress.com/ "WordPress.com: Create a free website or blog"
 [5]: http://docs.travis-ci.com/user/getting-started/ "Travis CI: Getting started"
 [6]: http://goo.gl/KJj2jU
