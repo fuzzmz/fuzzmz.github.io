@@ -1,5 +1,5 @@
 title: Zambind
-date: 
+date: 2015-03-28
 slug: zambind
 category: misc
 tags: rants, self, ro
