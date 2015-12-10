@@ -17,7 +17,7 @@ As such, all of the workload of bringing in upstream changes to the Android kern
 
 #:fa-exclamation:Except that's not it
 
-The problem is that all of the above simply isn't that accurate. For example, for an Android device running Linux 3.18, there are only 700 patches to Android-ify your kernel (adding modules like cpufreq_interactive, binder, SElinux fixes, etc.). You can see the list of kernel branches supported [here](1) to get an idea on how much, or little, they differ from upstream.
+The problem is that all of the above simply isn't that accurate. For example, for an Android device running Linux 3.18, there are only 700 patches to Android-ify your kernel (adding modules like cpufreq_interactive, binder, SElinux fixes, etc.). You can see the list of kernel branches supported [here][1] to get an idea on how much, or little, they differ from upstream.
 
 One of the reasons might be that SoC vendor brings up the kernel on a new chip (so Qualcomm for example ensures that everything is working on the SD808/810). The vendor invests and a lot of time and money in making sure everything is stable. The issue here is that the kernel changes a lot of hands: upstream (Linus) provides the base kernel, Google provides the core Android patches on top of a specific version (3.10, 3.14, 3.18, 4.1), the SoC vendor brings up their chip with their own set of patches, and then the actual device OEM will apply the final changes on top to support a specific device.
 
@@ -51,7 +51,7 @@ In theory, implementing dynamic linking would also be the gateway for Google to 
 
 #Read more
 
-If you've reached this point and still want more, then you can read [Running a mainline kernel on a cellphone](2) by Jonathan Corbet on the strugles and fun you'd have to face in having the latest and greatest.
+If you've reached this point and still want more, then you can read [Running a mainline kernel on a cellphone][2] by Jonathan Corbet on the strugles and fun you'd have to face in having the latest and greatest.
 
 [1]: https://android.googlesource.com/kernel/common.git/+refs/ "Refs - kernel/common.git - Git at Google"
 [2]: https://lwn.net/Articles/662147/ "Running a mainline kernel on a cellphone"
