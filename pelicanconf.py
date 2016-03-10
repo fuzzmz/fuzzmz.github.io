@@ -3,9 +3,9 @@
 from __future__ import unicode_literals
 
 AUTHOR = 'fuzzmz'
-SITENAME = 'QWERTY'
+SITENAME = 'Fuzzmz | ramblings on tech, life, and randomness by Serban Constantin'
 SITEURL = 'http://fuzz.me.uk'
-SITESUBTITLE = 'ramblings on tech, life, and randomness'
+SITESUBTITLE = 'ramblings on tech, life, and randomness by Serban Constantin'
 
 PATH = 'content'
 
@@ -41,6 +41,7 @@ DEFAULT_PAGINATION = 8
 THEME = "./static_deps/pelican-themes/pelican-twitchy"
 BOOTSTRAP_THEME = 'sandstone'
 PYGMENTS_STYLE = 'colorful'
+OPEN_GRAPH = True
 
 #paths
 #PAGE_SAVE_AS = ''
