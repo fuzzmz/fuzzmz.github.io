@@ -41,6 +41,7 @@ DEFAULT_PAGINATION = 8
 THEME = "./static_deps/pelican-themes/pelican-twitchy"
 BOOTSTRAP_THEME = 'sandstone'
 PYGMENTS_STYLE = 'colorful'
+OPEN_GRAPH = True
 
 #paths
 #PAGE_SAVE_AS = ''
