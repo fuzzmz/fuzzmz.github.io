@@ -3,7 +3,7 @@
 from __future__ import unicode_literals
 
 AUTHOR = 'fuzzmz'
-SITENAME = 'QWERTY'
+SITENAME = 'Fuzzmz | ramblings on tech, life, and randomness by Serban Constantin'
 SITEURL = 'http://fuzz.me.uk'
 SITESUBTITLE = 'ramblings on tech, life, and randomness'
 
