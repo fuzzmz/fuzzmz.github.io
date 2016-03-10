@@ -1,3 +1,5 @@
 output
 *.pyc
 cache
+venv
+.env
