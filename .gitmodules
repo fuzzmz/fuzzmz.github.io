@@ -1,0 +1,4 @@
+[submodule "static_deps/pelican-themes/pelican-twitchy"]
+	path = static_deps/pelican-themes/pelican-twitchy
+	url = https://github.com/fuzzmz/pelican-twitchy
+	branch = custom-changes

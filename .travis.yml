@@ -8,7 +8,6 @@ before_install:
   - "export TRAVIS_COMMIT_MSG=\"$(git log --format=%B -n 1 | head -c23)\""
 install:
   - pip install -r requirements.txt
-  - pip install git+https://github.com/fuzzmz/pelicanfly@feature/font-awesome-4.5.0
 script:
   - git config --global user.name "Serban Constantin"
   - git config --global user.email serban.constantin@gmail.com
