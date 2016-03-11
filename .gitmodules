@@ -2,3 +2,18 @@
 	path = static_deps/pelican-themes/pelican-twitchy
 	url = https://github.com/fuzzmz/pelican-twitchy
 	branch = custom-changes
+[submodule "static_deps/pelican-plugins/bootstrapify"]
+	path = static_deps/pelican-plugins/bootstrapify
+	url = https://github.com/ingwinlu/pelican-bootstrapify
+[submodule "static_deps/pelican-plugins/sort_tags"]
+	path = static_deps/pelican-plugins/sort_tags
+	url = https://github.com/ingwinlu/sort_tags
+[submodule "static_deps/pelican-plugins/toc"]
+	path = static_deps/pelican-plugins/toc
+	url = https://github.com/ingwinlu/pelican-toc
+[submodule "static_deps/pelican-plugins/clean_summary"]
+	path = static_deps/pelican-plugins/clean_summary
+	url = https://github.com/sampot/pelican-clean_summary
+[submodule "static_deps/pelican-plugins/render_math"]
+	path = static_deps/pelican-plugins/render_math
+	url = https://github.com/barrysteyn/pelican_plugin-render_math
