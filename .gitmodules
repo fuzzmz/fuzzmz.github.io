@@ -2,3 +2,6 @@
 	path = static_deps/pelican-themes/pelican-twitchy
 	url = https://github.com/fuzzmz/pelican-twitchy
 	branch = custom-changes
+[submodule "static_deps/pelican-plugins/bootstrapify"]
+	path = static_deps/pelican-plugins/bootstrapify
+	url = https://github.com/ingwinlu/pelican-bootstrapify
