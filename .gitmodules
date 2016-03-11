@@ -14,3 +14,6 @@
 [submodule "static_deps/pelican-plugins/clean_summary"]
 	path = static_deps/pelican-plugins/clean_summary
 	url = https://github.com/sampot/pelican-clean_summary
+[submodule "static_deps/pelican-plugins/render_math"]
+	path = static_deps/pelican-plugins/render_math
+	url = https://github.com/barrysteyn/pelican_plugin-render_math
