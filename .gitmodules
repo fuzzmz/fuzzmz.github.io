@@ -8,3 +8,6 @@
 [submodule "static_deps/pelican-plugins/sort_tags"]
 	path = static_deps/pelican-plugins/sort_tags
 	url = https://github.com/ingwinlu/sort_tags
+[submodule "static_deps/pelican-plugins/toc"]
+	path = static_deps/pelican-plugins/toc
+	url = https://github.com/ingwinlu/pelican-toc
