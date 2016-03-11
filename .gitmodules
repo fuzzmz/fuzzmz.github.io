@@ -11,3 +11,6 @@
 [submodule "static_deps/pelican-plugins/toc"]
 	path = static_deps/pelican-plugins/toc
 	url = https://github.com/ingwinlu/pelican-toc
+[submodule "static_deps/pelican-plugins/clean_summary"]
+	path = static_deps/pelican-plugins/clean_summary
+	url = https://github.com/sampot/pelican-clean_summary
