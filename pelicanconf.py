@@ -51,7 +51,7 @@ ARTICLE_URL = '{slug}/'
 ARTICLE_SAVE_AS = '{slug}/index.html'
 
 #plugins
-PLUGIN_PATHS = ['./static_deps/pelican-plugins', './static_deps/pelican-plugins-custom' ]
+PLUGIN_PATHS = ['./static_deps/pelican-plugins']
 PLUGINS = ['render_math' , 'sort_tags' , 'bootstrapify', 'toc', 'pelicanfly', 'clean_summary']
 
 #dateformat
