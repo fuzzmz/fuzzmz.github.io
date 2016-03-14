@@ -4,7 +4,7 @@ Tags: Google, Google Drive, sync
 Category: misc
 Slug: google-drive-thoughts
 
-<img style="float:left; padding-right:10px" src="/images/import-old/google-drive.PNG" />
+<img style="float:left; padding-right:10px" src="/images/imported-old/google-drive.PNG" />
 
 [Google Drive](https://drive.google.com) has been available for some time now and I've been playing with it for a bit. I just want to mention right now that I'm a big Dropbox fan and also a user of Microsoft's SkyDrive.
 
