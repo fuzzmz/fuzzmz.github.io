@@ -3,6 +3,7 @@ Title: Google Drive - Not Ready for Primetime
 Tags: Google, Google Drive, sync
 Category: misc
 Slug: google-drive-thoughts
+og_image: images/imported-old/google-drive.PNG
 
 <img style="float:left; padding-right:10px" src="/images/imported-old/google-drive.PNG" />
 

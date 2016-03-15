@@ -4,6 +4,7 @@ slug: metric-hdd
 category: misc
 tags: storage, maths
 summary: I got myself a really nice Samsung SSD to replace the slow as hell 5400RPM WD I had as my main drive in my laptop, and seeing the size got me to thinking about base conversion. Let's do conversions!
+og_image: images/metric-hdd/samsung_ssd.jpg
 
 ![featureimage](/images/metric-hdd/samsung_ssd.jpg)
 

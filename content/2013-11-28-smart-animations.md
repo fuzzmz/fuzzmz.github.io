@@ -3,6 +3,7 @@ date: 2013-11-28
 slug: smart-animations
 category: ux
 tags: mobile, usage patterns, usability
+og_image: images/smart-animations/animation_scale.jpg
 
 ![Android animation speed](/images/smart-animations/animation_scale.jpg)
 
