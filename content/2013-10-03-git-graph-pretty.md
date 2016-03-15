@@ -3,6 +3,7 @@ date: 2013-10-03
 slug: git-graph-pretty
 category: how-to
 tags: git, scm
+og_image: images/git-graph-pretty/git_lg.png
 
 If you're using git as a version control system you must know of the awesomeness that is `git log --graph`; this displays your commits in a nice tree form.
 

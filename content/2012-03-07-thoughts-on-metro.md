@@ -3,6 +3,7 @@ Title: Short thoughts on Windows 8 & Metro
 Tags: Windows, Metro, Windows 8, Microsoft, design, UX, UI, skeumorphic
 Category: ux
 Slug: thoughts-on-metro
+og_image: images/imported-old/win8_header.png
 
 There's been a lot of talk about the recent release of the Windows 8 Consumer Preview and of the new Start Screen and Metro interface. I've been running it for some time now and will post a full article containing my impressions sometime next week, but until then I wanted to talk a bit about the most polarizing aspect of the new OS: the new start screen and the Metro design language.
 

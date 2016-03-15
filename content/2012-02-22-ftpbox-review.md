@@ -3,6 +3,7 @@ Title: A look at FTPbox
 Tags: FTPbox, Dropbox, syncing
 Category: misc
 Slug: ftpbox-review
+og_image: images/imported-old/ftpbox.png
 
 <img style="float:left; padding-right:10px" src="/images/imported-old/ftpbox.png" />
 

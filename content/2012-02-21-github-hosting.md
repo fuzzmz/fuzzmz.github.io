@@ -3,6 +3,7 @@ Title: GitHub Pages - free website hosting
 Tags: hosting, github, github pages, free
 Category: misc
 Slug: github-hosting
+og_image: images/imported-old/github_pages_hosting.png
 
 From time to time I run into people who want to host a simple (or not so simple, as we'll show later on in this post) website online but don't want to spend money on hosting or even a domain name.
 
