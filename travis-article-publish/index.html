@@ -1,0 +1,436 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script type="text/javascript">
+        var host = "fuzz.me.uk";
+        if ((host == window.location.host) && (window.location.protocol != "https:"))
+            window.location.protocol = "https";
+    </script>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="author" content="fuzzmz" />
+        <meta name="keywords" content="git,Travis-CI,GitHub" />
+        <meta name="description" content="Geeking out after switching back the blog to Pelican and hosting it on GitHub Pages, I decided to set up automated publishing of the HTML content from the markdown articles without manually running Pelican on my own PC. So what better way to do this than plug everything into Travis CI, because continuous integration doesn’t automatically imply code." />
+
+<!-- Open Graph tags -->
+<meta property="og:site_name" content="Fuzzmz | ramblings on tech, life, and randomness by Serban Constantin"/>
+<meta property="twitter:site" content="@fuzzmz"/>
+<meta property="twitter:creator" content="@fuzzmz"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="Travis-CI article publishing"/>
+    <meta property="og:url" content="https://fuzz.me.uk/travis-article-publish/"/>
+    <meta property="og:description" content="Geeking out after switching back the blog to Pelican and hosting it on GitHub Pages, I decided to set up automated publishing of the HTML content from the markdown articles without manually running Pelican on my own PC. So what better way to do this than plug everything into Travis CI, because continuous integration doesn’t automatically imply code."/>
+    <meta property="article:published_time" content="2015-03-25" />
+    <meta property="article:section" content="how-to" />
+        <meta property="article:tag" content="git" />
+        <meta property="article:tag" content="Travis-CI" />
+        <meta property="article:tag" content="GitHub" />
+        <meta property="article:author" content="fuzzmz" />
+        <meta property="twitter:card" content="summary" />
+
+    <title>Travis-CI article publishing - Fuzzmz | ramblings on tech, life, and randomness by Serban Constantin</title>
+
+        <link rel="stylesheet" href="https://fuzz.me.uk/theme/css/bootstrap.sandstone.min.css" type="text/css"/>
+
+    <link href="https://fuzz.me.uk/theme/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="https://fuzz.me.uk/theme/css/pygments/colorful.css" rel="stylesheet" />
+    
+        <link href="https://fuzz.me.uk/theme/css/typogrify.css" rel="stylesheet" />
+    <link href="https://fuzz.me.uk/theme/css/pelican-twitchy.min.css" rel="stylesheet" />
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <!-- Feeds -->
+</head>
+<body data-spy="scroll" data-target="#scrollspy">
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper-small" class="twitchy-background">
+            <ul id="accordion-small" class="sidebar-nav sidebar-nav-small">
+                <li>
+        <a href="https://fuzz.me.uk" title="Fuzzmz | ramblings on tech, life, and randomness by Serban Constantin" class="collapsed">
+            <span class="glyphicon glyphicon-home"></span>
+        </a>
+    </li>
+                <li class="nav-divider"></li>
+                <li>
+        <a href="https://fuzz.me.uk/archives.html" title="Recent Articles" class="collapsed">
+            <span class="glyphicon glyphicon-th-list"></span>
+        </a>
+    </li>
+                
+                <li class="nav-divider"></li>
+                <li id="share-small">
+                    <a data-toggle="collapse" data-parent="#accordion-small" href="#collapse-share-small" title="Share" class="collapsed">
+                        <i class="fa fa-share-alt padding-small"></i>
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-share-small" class="collapse ">
+                    <li>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=https://fuzz.me.uk/travis-article-publish/" title="Share via Facebook" target="popup">
+                            <i class="fa fa-facebook-square padding-small"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/share?url=https://fuzz.me.uk/travis-article-publish/" title="Share via Google+" target="popup">
+                            <i class="fa fa-google-plus padding-small"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" title="Share via Twitter" target="popup">
+                            <i class="fa fa-twitter-square padding-small"></i>
+                        </a>
+                    </li>
+                </ul></li>
+                <li class="nav-divider"></li>
+                <li>
+                    <a data-toggle="collapse" data-parent="#accordion-small" href="#collapse-social-small" title="Social" class="collapsed">
+                        <i class="fa fa-users padding-small"></i>
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-social-small" class="collapse ">
+                    <li>
+                        <a href="https://github.com/fuzzmz" title="GitHub"><i class="fa fa-github-square fa-lg padding-small"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/+serbanconstantin" title="Google+"><i class="fa fa-google-plus-square fa-lg padding-small"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://feeds.feedburner.com/fuzzmeuk" title="RSS"><i class="fa fa-rss-square fa-lg padding-small"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/fuzzmz" title="Twitter"><i class="fa fa-twitter-square fa-lg padding-small"></i></a>
+                    </li>
+                </ul></li>
+                <li class="nav-divider"></li>
+                <li>
+        <a href="#" title="Back to top" class="collapsed">
+            <span class="fa fa-arrow-up"></span>
+        </a>
+    </li>
+            </ul>
+        </div>
+        <div id="sidebar-wrapper" class="twitchy-background">
+            <ul id="accordion" class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="https://fuzz.me.uk/">
+                            <span class="glyphicon glyphicon-home padding-small"></span>
+                            Home
+                    </a>
+                </li>
+                    <li class="nav-divider"></li>
+                    <li>
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse-latest">
+                            <span class="glyphicon glyphicon-th-list padding-small"></span>
+                            Recent Articles
+                        </a>
+                    </li>
+                    <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
+                        <li class="">
+                            <a class="hide-overflow" href="https://fuzz.me.uk/burn-it-all/" title="Burn it all">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Burn it all
+                            </a>
+                        </li>
+                        <li class="">
+                            <a class="hide-overflow" href="https://fuzz.me.uk/https-now-green/" title="Green URL bar">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Green URL bar
+                            </a>
+                        </li>
+                        <li class="">
+                            <a class="hide-overflow" href="https://fuzz.me.uk/making-private-tests-public/" title="Making private tests public">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Making private tests public
+                            </a>
+                        </li>
+                        <li class="">
+                            <a class="hide-overflow" href="https://fuzz.me.uk/google-photos-shared-albums-annoyances/" title="Google Photos Shared Albums annoyances">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Google Photos Shared Albums annoyances
+                            </a>
+                        </li>
+                        <li class="">
+                            <a class="hide-overflow" href="https://fuzz.me.uk/oh-kernel-my-kernel/" title="Oh kernel, my kernel">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Oh kernel, my kernel
+                            </a>
+                        </li>
+                    <li>
+                        <a href="https://fuzz.me.uk/archives.html">
+                            <i class="fa fa-arrow-right padding-small"></i>
+                            More
+                        </a>
+                    </li>
+                    </ul></li>
+                <li class="nav-divider"></li>
+                <li id="share">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-share" title="Share" class="collapsed">
+                        <i class="fa fa-share-alt padding-small"></i>
+                        Share
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-share" class="sidebar_submenu collapse ">
+                    <li>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=https://fuzz.me.uk/travis-article-publish/" target="popup">
+                            <i class="fa fa-facebook-square padding-small"></i>
+                            Facebook
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/share?url=https://fuzz.me.uk/travis-article-publish/" target="popup">
+                            <i class="fa fa-google-plus padding-small"></i>
+                            Google+
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" target="popup">
+                            <i class="fa fa-twitter-square padding-small"></i>
+                            Twitter
+                        </a>
+                    </li>
+                </ul></li>
+                <li class="nav-divider"></li>
+                <li>
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-social">
+                        <i class="fa fa-users padding-small"></i>
+                        Contact
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-social" class="sidebar_submenu collapse ">
+                    <li>
+                        <a href="https://github.com/fuzzmz" title="GitHub">
+                            <i class="fa fa-github-square fa-lg padding-small"></i>
+                            GitHub
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/+serbanconstantin" title="Google+">
+                            <i class="fa fa-google-plus-square fa-lg padding-small"></i>
+                            Google+
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://feeds.feedburner.com/fuzzmeuk" title="RSS">
+                            <i class="fa fa-rss-square fa-lg padding-small"></i>
+                            RSS
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/fuzzmz" title="Twitter">
+                            <i class="fa fa-twitter-square fa-lg padding-small"></i>
+                            Twitter
+                        </a>
+                    </li>
+                </ul></li>
+                
+                
+                <li class="nav-divider"></li>
+                <li>
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-categories">
+                        <i class="fa fa-folder-open padding-small"></i>
+                        Categories
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-categories" class="sidebar_submenu collapse ">
+                    <li >
+                        <a href="https://fuzz.me.uk/category/debug.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            debug
+                            <span class="badge pull-right categorybadge">14</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="https://fuzz.me.uk/category/how-to.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            how-to
+                            <span class="badge pull-right categorybadge">7</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="https://fuzz.me.uk/category/misc.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            misc
+                            <span class="badge pull-right categorybadge">31</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="https://fuzz.me.uk/category/ux.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            ux
+                            <span class="badge pull-right categorybadge">4</span>
+                        </a>
+                    </li>
+                </ul></li>
+                
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+        <!-- open/close sidebar -->
+        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">
+            <span id="right-arrow" class="glyphicon glyphicon-chevron-right"  title="expand sidebar"></span>
+            <span id="left-arrow" class="glyphicon glyphicon-chevron-left" title="minimize sidebar"></span>
+        </a>
+       <!-- /open/close sidebar -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+<section id="content">
+    <article>
+        <div class="row">
+            <div class="col-lg-9">
+                <header class="page-header">
+                    <h1>
+                        <a href="https://fuzz.me.uk/travis-article-publish/"
+                           rel="bookmark"
+                           title="Permalink to Travis-CI article publishing">
+                            Travis-<span class="caps">CI</span> article&nbsp;publishing
+                        </a>
+                        <small>
+<div class="post-info">
+    <div class="publish-info-block">
+        <small>
+            <span class="published">
+                <i class="fa fa-calendar padding-small"></i><time datetime="2015-03-25T00:00:00+02:00"> 2015-03-25</time>
+            </span>
+            <span class="category">
+                <i class="fa fa-folder-open padding-small"></i><a href="https://fuzz.me.uk/category/how-to.html">how-to</a>
+            </span>
+            <span class="tags">
+                <i class="fa fa-tags padding-small"></i>
+                <a href="https://fuzz.me.uk/tag/git.html">git</a> /                 <a href="https://fuzz.me.uk/tag/travis-ci.html">Travis-CI</a> /                 <a href="https://fuzz.me.uk/tag/github.html">GitHub</a>            </span>
+        </small>
+    </div>
+</div><!-- /.post-info -->                        </small>
+                    </h1>
+                </header>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="entry-content">
+                    <h1 id="configuring-the-job">Configuring the&nbsp;job</h1>
+<p>I&rsquo;m not going to go through the whole set-up of having Pelican up and running, nor about how to configure GitHub pages in order to publish your blog, though those are some nice ideas for future articles <i class="fa fa-lightbulb-o"></i>.</p>
+<p>The publishing flow would be as&nbsp;follows:</p>
+<ol>
+<li>Create a separate <code>article/article-name</code> branch on which to work on the&nbsp;article</li>
+<li>Submit a pull request to the <code>source</code> branch once the article is&nbsp;finished</li>
+<li>On pull request merge run a Travis <span class="caps">CI</span> job to get the latest changes, publish using Pelican and push the output back to the <code>master</code> branch in order to make the changes&nbsp;public.</li>
+</ol>
+<p>I am fully aware that this sounds so much more complicated compared to publishing an article using <i class="fa fa-wordpress"></i> <a href="https://en.wordpress.com/" title="WordPress.com: Create a free website or blog">Wordpress</a> for example, but it fits well into my mostly command line world, <i class="fa fa-git"></i> and <i class="fa fa-github"></i> love and general&nbsp;geekiness.</p>
+<p>The actual implementation can be split in&nbsp;two:</p>
+<ol>
+<li>Getting Travis <span class="caps">CI</span> to notice that a merge was&nbsp;made</li>
+<li>Telling Travis <span class="caps">CI</span> what to do once <code>1</code> happens</li>
+</ol>
+<hr/>
+<h2 id="1-travis-integration">1. Travis&nbsp;integration</h2>
+<p>Actually setting up Travis <span class="caps">CI</span> is pretty easy and <a href="http://docs.travis-ci.com/user/getting-started/" title="Travis CI: Getting started">their docs</a> are amazing, so in short you flip a setting in your GitHub repository options and add a <code>.travis.yml</code> file which basically configures how a Travis <span class="caps">CI</span> job&nbsp;works.</p>
+<p>My <a href="http://goo.gl/KJj2jU"><code>.travis.yml</code></a> file is as&nbsp;follows:</p>
+<div class="highlight"><pre><span></span><span class="n">language</span><span class="o">:</span> <span class="n">python</span>
+<span class="n">python</span><span class="o">:</span>
+  <span class="o">-</span> <span class="s1">'2.7'</span>
+<span class="n">branches</span><span class="o">:</span>
+  <span class="n">only</span><span class="o">:</span>
+  <span class="o">-</span> <span class="n">source</span>
+<span class="n">before_install</span><span class="o">:</span>
+  <span class="o">-</span> <span class="s2">"export TRAVIS_COMMIT_MSG=\"$(git log --format=%B -n 1 | head -c23)\""</span>
+<span class="n">install</span><span class="o">:</span>
+  <span class="o">-</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">.</span><span class="na">txt</span>
+  <span class="o">-</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">git</span><span class="o">+</span><span class="n">https</span><span class="o">://</span><span class="n">github</span><span class="o">.</span><span class="na">com</span><span class="sr">/fuzzmz/</span><span class="n">pelicanfly</span><span class="err">@</span><span class="n">font</span><span class="o">-</span><span class="n">awesome</span><span class="o">-</span><span class="mf">4.3</span><span class="o">.</span><span class="mi">0</span>
+<span class="n">script</span><span class="o">:</span>
+  <span class="o">-</span> <span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="n">global</span> <span class="n">user</span><span class="o">.</span><span class="na">name</span> <span class="s2">"Serban Constantin"</span>
+  <span class="o">-</span> <span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="n">global</span> <span class="n">user</span><span class="o">.</span><span class="na">email</span> <span class="n">serban</span><span class="o">.</span><span class="na">constantin</span><span class="err">@</span><span class="n">gmail</span><span class="o">.</span><span class="na">com</span>
+  <span class="o">-</span> <span class="n">make</span> <span class="n">publish</span>
+  <span class="o">-</span> <span class="n">make</span> <span class="n">github</span>
+<span class="n">env</span><span class="o">:</span>
+  <span class="n">global</span><span class="o">:</span>
+  <span class="o">-</span> <span class="n">secure</span><span class="o">:</span> <span class="n">M88dgw5e8vf2W9wXgTJCxPsFfQSjkXeHrPfiyllyd7ypPY0AynIbsLGlvS0d6ZKPlXgHNaVQqRcvGSvobLb5FuADyamvPKNLf</span><span class="o">+</span><span class="n">LmUOuRh0aiK91s</span><span class="o">+</span><span class="n">kVo9</span><span class="o">+</span><span class="n">qobl9a4kgY2n5flbZpWAyOYDlMdwZHl9B9uBK1i5KtZMT1j</span><span class="o">+</span><span class="n">FKAEk</span><span class="o">=</span>
+</pre></div>
+<p>This file tells us that the scripts will run on Python 2.7, and to only run when changes happen to the <code>source</code> branch.</p>
+<p>The next step is to tell Travis that before installing our required packages he should export the git commit message which prompted the build to the <code>TRAVIS_COMMIT_MSG</code> variable, which will then be used when pushing the <span class="caps">HTML</span> files to the <code>master</code> branch (see <i class="fa fa-code-fork"></i> <a href="https://github.com/fuzzmz/fuzzmz.github.io/pull/12" title="Fix missing author and commit message #12">Fix missing author and commit message</a>).</p>
+<p>After that we go ahead and install all the packages required to publish the blog (Pelican, Markdown, etc), as well as a custom fork of one of the packages and configure git so that the correct author is displayed in the repository <code>master</code> branch after pushing the published content to&nbsp;it.</p>
+<p>We then go ahead and actually publish the content via <code>make publish</code> and push it to GitHub using <code>make github</code>, functions which will get explained a bit further&nbsp;down.</p>
+<p>One more thing that needs done is to have a way to let Travis push the changes back to the repo. This is done by <a href="https://github.com/settings/applications">generating a token</a> on GitHub and encoding it using the <a href="https://github.com/travis-ci/travis.rb#installation">travis ruby application</a> so that others can&rsquo;t use said token to push to my&nbsp;repository.</p>
+<p>The last thing that needs to be done is to disable pull request builds in Travis <span class="caps">CI</span> to prevent the blog being updated by a pull&nbsp;request.</p>
+<p><img alt="disable pull request" class="img-responsive" src="/images/travis-article-publish/travis-pull-request.png"/></p>
+<hr/>
+<h2 id="2-travis-commands">2. Travis&nbsp;commands</h2>
+<p>The actual steps to publish the blog and push it back to GitHub are detailed in the <code>Makefile</code> and called via <code>make publish</code> and <code>make github</code>.</p>
+<div class="highlight"><pre><span></span><span class="n">PELICAN</span><span class="o">=</span><span class="n">pelican</span>
+
+<span class="n">BASEDIR</span><span class="o">=</span><span class="err">$</span><span class="p">(</span><span class="n">CURDIR</span><span class="p">)</span>
+<span class="n">INPUTDIR</span><span class="o">=</span><span class="err">$</span><span class="p">(</span><span class="n">BASEDIR</span><span class="p">)</span><span class="o">/</span><span class="n">content</span>
+<span class="n">OUTPUTDIR</span><span class="o">=</span><span class="err">$</span><span class="p">(</span><span class="n">BASEDIR</span><span class="p">)</span><span class="o">/</span><span class="n">output</span>
+<span class="n">CONFFILE</span><span class="o">=</span><span class="err">$</span><span class="p">(</span><span class="n">BASEDIR</span><span class="p">)</span><span class="o">/</span><span class="n">pelicanconf</span><span class="o">.</span><span class="n">py</span>
+
+<span class="n">clean</span><span class="p">:</span>
+    <span class="p">[</span> <span class="err">!</span> <span class="o">-</span><span class="n">d</span> <span class="err">$</span><span class="p">(</span><span class="n">OUTPUTDIR</span><span class="p">)</span> <span class="p">]</span> <span class="o">||</span> <span class="n">rm</span> <span class="o">-</span><span class="n">rf</span> <span class="err">$</span><span class="p">(</span><span class="n">OUTPUTDIR</span><span class="p">)</span>
+
+<span class="n">publish</span><span class="p">:</span>
+    <span class="err">$</span><span class="p">(</span><span class="n">PELICAN</span><span class="p">)</span> <span class="err">$</span><span class="p">(</span><span class="n">INPUTDIR</span><span class="p">)</span> <span class="o">--</span><span class="n">debug</span> <span class="o">--</span><span class="n">output</span> <span class="err">$</span><span class="p">(</span><span class="n">OUTPUTDIR</span><span class="p">)</span> <span class="o">--</span><span class="n">settings</span> <span class="err">$</span><span class="p">(</span><span class="n">CONFFILE</span><span class="p">)</span>
+
+<span class="n">github</span><span class="p">:</span>
+    <span class="n">ghp</span><span class="o">-</span><span class="kn">import</span> <span class="o">-</span><span class="n">n</span> <span class="o">-</span><span class="n">b</span> <span class="n">master</span> <span class="o">-</span><span class="n">m</span> <span class="s2">"${TRAVIS_COMMIT_MSG}"</span> <span class="err">$</span><span class="p">(</span><span class="n">OUTPUTDIR</span><span class="p">)</span>
+    <span class="nd">@git</span> <span class="n">push</span> <span class="o">-</span><span class="n">fq</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="err">$</span><span class="p">{</span><span class="n">GH_TOKEN</span><span class="p">}</span><span class="nd">@github.com</span><span class="o">/</span><span class="err">$</span><span class="p">(</span><span class="n">TRAVIS_REPO_SLUG</span><span class="p">)</span><span class="o">.</span><span class="n">git</span> <span class="n">master</span>
+</pre></div>
+<p>In the <code>Makefile</code> we define the current directory, the directory which holds the articles in markdown, the output directory which will store the generated <span class="caps">HTML</span> files as well as the path to the Pelican configuration&nbsp;file.</p>
+<p>To publish the blog we simply run&nbsp;Pelican.</p>
+<p>To push the changes to the repo so they become live we use <code>ghp-import</code> to simplify the process of committing the files and setting the correct branch (<code>master</code> in this case) and commit message, and then do a <code>git push</code>.</p>
+<p>And that&rsquo;s it, now you just have to wait for the Travis <span class="caps">CI</span> build to take place, after which your content will be automatically made&nbsp;available.</p>
+<p>Oh, and there&rsquo;s also an associated pull request for this article, <i class="fa fa-code-fork"></i> <a href="https://github.com/fuzzmz/fuzzmz.github.io/pull/13" title="add Travis-CI publishing article">add Travis-<span class="caps">CI</span> publishing article</a>.</p>
+                </div>
+                <footer class="text-right">
+                    <p>- fuzzmz</p>
+                </footer>
+    <script data-isso="//discuss.fuzz.me.uk/"
+            data-isso-avatar="false"
+            src="//discuss.fuzz.me.uk/js/embed.min.js"></script>
+
+    <section id="isso-thread"></section>
+            </div>
+    <div id="scrollspy">
+        <div class="col-lg-3 nav nav-stacked hidden-xs hidden-sm" data-spy="affix" data-offset-top="135">
+            <div id="toc"><ul><li><a class="toc-href" href="#" title='Travis-&lt;span class="caps"&gt;CI&lt;/span&gt; article&nbsp;publishing'>Travis-<span class="caps">CI</span> article&nbsp;publishing</a><ul><li><a class="toc-href" href="#configuring-the-job" title="Configuring the&nbsp;job">Configuring the&nbsp;job</a><ul><li><a class="toc-href" href="#1-travis-integration" title="1. Travis&nbsp;integration">1. Travis&nbsp;integration</a></li><li><a class="toc-href" href="#2-travis-commands" title="2. Travis&nbsp;commands">2. Travis&nbsp;commands</a></li></ul></li></ul></li></ul></div>
+        </div>
+    </div>
+        </div>
+    </article>
+</section>
+<footer>
+    <hr>
+    <div class="row">
+        <div class="col-xs-4 text-left">
+            <p><small>
+                ramblings on tech, life, and randomness by Serban Constantin
+            </small></p>
+        </div>
+        <div class="col-xs-5 text-right">
+            <p><small>
+                Built by <a href="http://docs.getpelican.com/en/latest">Pelican</a> / <a href="https://github.com/ingwinlu/pelican-twitchy">pelican-twitchy</a>
+                &middot;                    &copy; 2016 fuzzmz
+            </small></p>
+        </div>
+    </div>
+</footer>            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+    <!-- jQuery Version 1.11.2 -->
+    <script src="https://fuzz.me.uk/theme/js/jquery-1.11.2.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="https://fuzz.me.uk/theme/js/bootstrap.min.js"></script>
+    <!-- twitchy Script -->
+    <script src="https://fuzz.me.uk/theme/js/pelican_twitchy.min.js"></script>
+
+</body>
+</html>

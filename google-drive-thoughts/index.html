@@ -1,0 +1,378 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script type="text/javascript">
+        var host = "fuzz.me.uk";
+        if ((host == window.location.host) && (window.location.protocol != "https:"))
+            window.location.protocol = "https";
+    </script>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="author" content="fuzzmz" />
+        <meta name="keywords" content="Google,Google Drive,sync" />
+        <meta name="description" content="Google Drive has been available for some time now and I’ve been playing with it for a bit. I just want to mention right now that I’m a big Dropbox fan and also a user of Microsoft’s SkyDrive. Going back to Google Drive, there’s no burying ..." />
+
+<!-- Open Graph tags -->
+<meta property="og:site_name" content="Fuzzmz | ramblings on tech, life, and randomness by Serban Constantin"/>
+<meta property="twitter:site" content="@fuzzmz"/>
+<meta property="twitter:creator" content="@fuzzmz"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="Google Drive - Not Ready for Primetime"/>
+    <meta property="og:url" content="https://fuzz.me.uk/google-drive-thoughts/"/>
+    <meta property="og:description" content="Google Drive has been available for some time now and I’ve been playing with it for a bit. I just want to mention right now that I’m a big Dropbox fan and also a user of Microsoft’s SkyDrive. Going back to Google Drive, there’s no burying ..."/>
+    <meta property="article:published_time" content="2012-05-04" />
+    <meta property="article:section" content="misc" />
+        <meta property="article:tag" content="Google" />
+        <meta property="article:tag" content="Google Drive" />
+        <meta property="article:tag" content="sync" />
+        <meta property="article:author" content="fuzzmz" />
+        <meta property="og:image"
+              content="https://fuzz.me.uk/images/imported-old/google-drive.PNG"/>
+        <meta property="twitter:card" content="summary_large_image">
+
+    <title>Google Drive - Not Ready for Primetime - Fuzzmz | ramblings on tech, life, and randomness by Serban Constantin</title>
+
+        <link rel="stylesheet" href="https://fuzz.me.uk/theme/css/bootstrap.sandstone.min.css" type="text/css"/>
+
+    <link href="https://fuzz.me.uk/theme/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="https://fuzz.me.uk/theme/css/pygments/colorful.css" rel="stylesheet" />
+    
+        <link href="https://fuzz.me.uk/theme/css/typogrify.css" rel="stylesheet" />
+    <link href="https://fuzz.me.uk/theme/css/pelican-twitchy.min.css" rel="stylesheet" />
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <!-- Feeds -->
+</head>
+<body data-spy="scroll" data-target="#scrollspy">
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper-small" class="twitchy-background">
+            <ul id="accordion-small" class="sidebar-nav sidebar-nav-small">
+                <li>
+        <a href="https://fuzz.me.uk" title="Fuzzmz | ramblings on tech, life, and randomness by Serban Constantin" class="collapsed">
+            <span class="glyphicon glyphicon-home"></span>
+        </a>
+    </li>
+                <li class="nav-divider"></li>
+                <li>
+        <a href="https://fuzz.me.uk/archives.html" title="Recent Articles" class="collapsed">
+            <span class="glyphicon glyphicon-th-list"></span>
+        </a>
+    </li>
+                
+                <li class="nav-divider"></li>
+                <li id="share-small">
+                    <a data-toggle="collapse" data-parent="#accordion-small" href="#collapse-share-small" title="Share" class="collapsed">
+                        <i class="fa fa-share-alt padding-small"></i>
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-share-small" class="collapse ">
+                    <li>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=https://fuzz.me.uk/google-drive-thoughts/" title="Share via Facebook" target="popup">
+                            <i class="fa fa-facebook-square padding-small"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/share?url=https://fuzz.me.uk/google-drive-thoughts/" title="Share via Google+" target="popup">
+                            <i class="fa fa-google-plus padding-small"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" title="Share via Twitter" target="popup">
+                            <i class="fa fa-twitter-square padding-small"></i>
+                        </a>
+                    </li>
+                </ul></li>
+                <li class="nav-divider"></li>
+                <li>
+                    <a data-toggle="collapse" data-parent="#accordion-small" href="#collapse-social-small" title="Social" class="collapsed">
+                        <i class="fa fa-users padding-small"></i>
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-social-small" class="collapse ">
+                    <li>
+                        <a href="https://github.com/fuzzmz" title="GitHub"><i class="fa fa-github-square fa-lg padding-small"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/+serbanconstantin" title="Google+"><i class="fa fa-google-plus-square fa-lg padding-small"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://feeds.feedburner.com/fuzzmeuk" title="RSS"><i class="fa fa-rss-square fa-lg padding-small"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/fuzzmz" title="Twitter"><i class="fa fa-twitter-square fa-lg padding-small"></i></a>
+                    </li>
+                </ul></li>
+                <li class="nav-divider"></li>
+                <li>
+        <a href="#" title="Back to top" class="collapsed">
+            <span class="fa fa-arrow-up"></span>
+        </a>
+    </li>
+            </ul>
+        </div>
+        <div id="sidebar-wrapper" class="twitchy-background">
+            <ul id="accordion" class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="https://fuzz.me.uk/">
+                            <span class="glyphicon glyphicon-home padding-small"></span>
+                            Home
+                    </a>
+                </li>
+                    <li class="nav-divider"></li>
+                    <li>
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse-latest">
+                            <span class="glyphicon glyphicon-th-list padding-small"></span>
+                            Recent Articles
+                        </a>
+                    </li>
+                    <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
+                        <li class="">
+                            <a class="hide-overflow" href="https://fuzz.me.uk/burn-it-all/" title="Burn it all">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Burn it all
+                            </a>
+                        </li>
+                        <li class="">
+                            <a class="hide-overflow" href="https://fuzz.me.uk/https-now-green/" title="Green URL bar">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Green URL bar
+                            </a>
+                        </li>
+                        <li class="">
+                            <a class="hide-overflow" href="https://fuzz.me.uk/making-private-tests-public/" title="Making private tests public">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Making private tests public
+                            </a>
+                        </li>
+                        <li class="">
+                            <a class="hide-overflow" href="https://fuzz.me.uk/google-photos-shared-albums-annoyances/" title="Google Photos Shared Albums annoyances">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Google Photos Shared Albums annoyances
+                            </a>
+                        </li>
+                        <li class="">
+                            <a class="hide-overflow" href="https://fuzz.me.uk/oh-kernel-my-kernel/" title="Oh kernel, my kernel">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Oh kernel, my kernel
+                            </a>
+                        </li>
+                    <li>
+                        <a href="https://fuzz.me.uk/archives.html">
+                            <i class="fa fa-arrow-right padding-small"></i>
+                            More
+                        </a>
+                    </li>
+                    </ul></li>
+                <li class="nav-divider"></li>
+                <li id="share">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-share" title="Share" class="collapsed">
+                        <i class="fa fa-share-alt padding-small"></i>
+                        Share
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-share" class="sidebar_submenu collapse ">
+                    <li>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=https://fuzz.me.uk/google-drive-thoughts/" target="popup">
+                            <i class="fa fa-facebook-square padding-small"></i>
+                            Facebook
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/share?url=https://fuzz.me.uk/google-drive-thoughts/" target="popup">
+                            <i class="fa fa-google-plus padding-small"></i>
+                            Google+
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" target="popup">
+                            <i class="fa fa-twitter-square padding-small"></i>
+                            Twitter
+                        </a>
+                    </li>
+                </ul></li>
+                <li class="nav-divider"></li>
+                <li>
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-social">
+                        <i class="fa fa-users padding-small"></i>
+                        Contact
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-social" class="sidebar_submenu collapse ">
+                    <li>
+                        <a href="https://github.com/fuzzmz" title="GitHub">
+                            <i class="fa fa-github-square fa-lg padding-small"></i>
+                            GitHub
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/+serbanconstantin" title="Google+">
+                            <i class="fa fa-google-plus-square fa-lg padding-small"></i>
+                            Google+
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://feeds.feedburner.com/fuzzmeuk" title="RSS">
+                            <i class="fa fa-rss-square fa-lg padding-small"></i>
+                            RSS
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/fuzzmz" title="Twitter">
+                            <i class="fa fa-twitter-square fa-lg padding-small"></i>
+                            Twitter
+                        </a>
+                    </li>
+                </ul></li>
+                
+                
+                <li class="nav-divider"></li>
+                <li>
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-categories">
+                        <i class="fa fa-folder-open padding-small"></i>
+                        Categories
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-categories" class="sidebar_submenu collapse ">
+                    <li >
+                        <a href="https://fuzz.me.uk/category/debug.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            debug
+                            <span class="badge pull-right categorybadge">14</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="https://fuzz.me.uk/category/how-to.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            how-to
+                            <span class="badge pull-right categorybadge">7</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="https://fuzz.me.uk/category/misc.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            misc
+                            <span class="badge pull-right categorybadge">31</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="https://fuzz.me.uk/category/ux.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            ux
+                            <span class="badge pull-right categorybadge">4</span>
+                        </a>
+                    </li>
+                </ul></li>
+                
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+        <!-- open/close sidebar -->
+        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">
+            <span id="right-arrow" class="glyphicon glyphicon-chevron-right"  title="expand sidebar"></span>
+            <span id="left-arrow" class="glyphicon glyphicon-chevron-left" title="minimize sidebar"></span>
+        </a>
+       <!-- /open/close sidebar -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+<section id="content">
+    <article>
+        <div class="row">
+            <div class="col-lg-9">
+                <header class="page-header">
+                    <h1>
+                        <a href="https://fuzz.me.uk/google-drive-thoughts/"
+                           rel="bookmark"
+                           title="Permalink to Google Drive - Not Ready for Primetime">
+                            Google Drive - Not Ready for&nbsp;Primetime
+                        </a>
+                        <small>
+<div class="post-info">
+    <div class="publish-info-block">
+        <small>
+            <span class="published">
+                <i class="fa fa-calendar padding-small"></i><time datetime="2012-05-04T00:00:00+03:00"> 2012-05-04</time>
+            </span>
+            <span class="category">
+                <i class="fa fa-folder-open padding-small"></i><a href="https://fuzz.me.uk/category/misc.html">misc</a>
+            </span>
+            <span class="tags">
+                <i class="fa fa-tags padding-small"></i>
+                <a href="https://fuzz.me.uk/tag/google.html">Google</a> /                 <a href="https://fuzz.me.uk/tag/google-drive.html">Google Drive</a> /                 <a href="https://fuzz.me.uk/tag/sync.html">sync</a>            </span>
+        </small>
+    </div>
+</div><!-- /.post-info -->                        </small>
+                    </h1>
+                </header>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="entry-content">
+                    <p><img class="img-responsive" src="/images/imported-old/google-drive.PNG" style="float:left; padding-right:10px"/></p>
+<p><a href="https://drive.google.com">Google Drive</a> has been available for some time now and I&rsquo;ve been playing with it for a bit. I just want to mention right now that I&rsquo;m a big Dropbox fan and also a user of Microsoft&rsquo;s&nbsp;SkyDrive.</p>
+<p>Going back to Google Drive, there&rsquo;s no burying the lead, it sucks. I&rsquo;ve been testing the desktop app for automatically syncing files and there are some fatal flaws that makes it unreliable and&nbsp;unusable.</p>
+<hr/>
+<p>First, it doesn&rsquo;t work. I was able to get the program to error out, just like <a href="http://productforums.google.com/forum/#!topic/drive/8DNEH3U6vbE">seemingly everyone else</a>. Since the error can occur during the initializing phase of the program as well as afterwards, it stops functioning and sometimes cannot be started again without always erroring out. The only fix is to &lsquo;disconnect&rsquo; the drive which is one of the biggest mistakes of&nbsp;all.</p>
+<p>Why is that the biggest mistake of all? Because you can only &lsquo;reconnect&rsquo; the drive to an empty folder. If the program gets in an infinite error loop, the only fix is to &lsquo;disconnect&rsquo; the GDrive. When doing so, you are presented with an ominous message that seems like it will delete everything in the GDrive folder, and this isn&rsquo;t too far from the truth. You cannot re-enable the program without pointing it to an empty folder. If you think you&rsquo;re clever, you&rsquo;d just try to sneak the files back into the folder to work around this strange requirement. This is what I tried and it failed miserably. The program would silently download the files anyway and save one version with a number in the&nbsp;filename.</p>
+<p>Now, since the program errors out and requires a re-download of everything, I have to download 90,000 files again. I gave up on this process after 3 days, because I just knew it was going to finish and then decided to error out&nbsp;again.</p>
+<hr/>
+<p>Second, it&rsquo;s slow. No, I&rsquo;m not talking about upload bandwidth and a currently overloaded service. I mean the method it uses to scan the files and sync them to the cloud version is clumsily done. The overhead for this process is insanely high: there is no way to check for blocks of files, so it must check each file individually. I had only 3 megs worth of files and 2000 updates took a very, very long time. I included some more folders that used many small files (around 90,000 files) and it took days to&nbsp;synchronize.</p>
+<p>Also, while copying the files to the folder, the file copy process slowed to a crawl &mdash; a 1 minute process was going to take an hour to finish. I was able to close the program to complete the copy in a normal amount of time. So, file operations are much, much slower when working in this folder and this ties into the third issue&nbsp;below.</p>
+<hr/>
+<p>Third, it only supports a single folder location. This means you&rsquo;d have to use a link (junction/hardlink,symlink) to other folders outside the &lsquo;drive&rsquo; folder. Because the program only monitors the single folder, any changes to the linked folders will not register and may only be seen and updated during the initial scan at startup. To counter this, folders must be moved to this location and then links placed in the original position. It&rsquo;s just as easy to do as otherwise, but it&rsquo;s extremely counter intuitive and takes a while to figure out through trial and&nbsp;error.</p>
+<p>Now, you may say that Dropbox and SkyDrive also support only a single folder location, but at least they know how to parse and use links so that if something in a linked folder changes it gets uploaded then instead of at&nbsp;startup.</p>
+<hr/>
+<p>To sum it up: It&rsquo;s broken, slow enough to make it impractical, &lsquo;works&rsquo; only on a single folder, and the files on your computer are a treated as a &lsquo;second class&nbsp;citizen&rsquo;.</p>
+                </div>
+                <footer class="text-right">
+                    <p>- fuzzmz</p>
+                </footer>
+    <script data-isso="//discuss.fuzz.me.uk/"
+            data-isso-avatar="false"
+            src="//discuss.fuzz.me.uk/js/embed.min.js"></script>
+
+    <section id="isso-thread"></section>
+            </div>
+        </div>
+    </article>
+</section>
+<footer>
+    <hr>
+    <div class="row">
+        <div class="col-xs-4 text-left">
+            <p><small>
+                ramblings on tech, life, and randomness by Serban Constantin
+            </small></p>
+        </div>
+        <div class="col-xs-5 text-right">
+            <p><small>
+                Built by <a href="http://docs.getpelican.com/en/latest">Pelican</a> / <a href="https://github.com/ingwinlu/pelican-twitchy">pelican-twitchy</a>
+                &middot;                    &copy; 2016 fuzzmz
+            </small></p>
+        </div>
+    </div>
+</footer>            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+    <!-- jQuery Version 1.11.2 -->
+    <script src="https://fuzz.me.uk/theme/js/jquery-1.11.2.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="https://fuzz.me.uk/theme/js/bootstrap.min.js"></script>
+    <!-- twitchy Script -->
+    <script src="https://fuzz.me.uk/theme/js/pelican_twitchy.min.js"></script>
+
+</body>
+</html>

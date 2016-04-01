@@ -1,0 +1,391 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script type="text/javascript">
+        var host = "fuzz.me.uk";
+        if ((host == window.location.host) && (window.location.protocol != "https:"))
+            window.location.protocol = "https";
+    </script>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="author" content="fuzzmz" />
+        <meta name="keywords" content="FTPbox,Dropbox,syncing" />
+        <meta name="description" content="Dropbox is one of the most well known syncing services, and deservedly so, but one downside is that you have to use their servers for storing data, and with that, the account space limits they have in place. But what if you could use your own server to act as ..." />
+
+<!-- Open Graph tags -->
+<meta property="og:site_name" content="Fuzzmz | ramblings on tech, life, and randomness by Serban Constantin"/>
+<meta property="twitter:site" content="@fuzzmz"/>
+<meta property="twitter:creator" content="@fuzzmz"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="A look at FTPbox"/>
+    <meta property="og:url" content="https://fuzz.me.uk/ftpbox-review/"/>
+    <meta property="og:description" content="Dropbox is one of the most well known syncing services, and deservedly so, but one downside is that you have to use their servers for storing data, and with that, the account space limits they have in place. But what if you could use your own server to act as ..."/>
+    <meta property="article:published_time" content="2012-02-22" />
+    <meta property="article:section" content="misc" />
+        <meta property="article:tag" content="FTPbox" />
+        <meta property="article:tag" content="Dropbox" />
+        <meta property="article:tag" content="syncing" />
+        <meta property="article:author" content="fuzzmz" />
+        <meta property="og:image"
+              content="https://fuzz.me.uk/images/imported-old/ftpbox.png"/>
+        <meta property="twitter:card" content="summary_large_image">
+
+    <title>A look at FTPbox - Fuzzmz | ramblings on tech, life, and randomness by Serban Constantin</title>
+
+        <link rel="stylesheet" href="https://fuzz.me.uk/theme/css/bootstrap.sandstone.min.css" type="text/css"/>
+
+    <link href="https://fuzz.me.uk/theme/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="https://fuzz.me.uk/theme/css/pygments/colorful.css" rel="stylesheet" />
+    
+        <link href="https://fuzz.me.uk/theme/css/typogrify.css" rel="stylesheet" />
+    <link href="https://fuzz.me.uk/theme/css/pelican-twitchy.min.css" rel="stylesheet" />
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <!-- Feeds -->
+</head>
+<body data-spy="scroll" data-target="#scrollspy">
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper-small" class="twitchy-background">
+            <ul id="accordion-small" class="sidebar-nav sidebar-nav-small">
+                <li>
+        <a href="https://fuzz.me.uk" title="Fuzzmz | ramblings on tech, life, and randomness by Serban Constantin" class="collapsed">
+            <span class="glyphicon glyphicon-home"></span>
+        </a>
+    </li>
+                <li class="nav-divider"></li>
+                <li>
+        <a href="https://fuzz.me.uk/archives.html" title="Recent Articles" class="collapsed">
+            <span class="glyphicon glyphicon-th-list"></span>
+        </a>
+    </li>
+                
+                <li class="nav-divider"></li>
+                <li id="share-small">
+                    <a data-toggle="collapse" data-parent="#accordion-small" href="#collapse-share-small" title="Share" class="collapsed">
+                        <i class="fa fa-share-alt padding-small"></i>
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-share-small" class="collapse ">
+                    <li>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=https://fuzz.me.uk/ftpbox-review/" title="Share via Facebook" target="popup">
+                            <i class="fa fa-facebook-square padding-small"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/share?url=https://fuzz.me.uk/ftpbox-review/" title="Share via Google+" target="popup">
+                            <i class="fa fa-google-plus padding-small"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" title="Share via Twitter" target="popup">
+                            <i class="fa fa-twitter-square padding-small"></i>
+                        </a>
+                    </li>
+                </ul></li>
+                <li class="nav-divider"></li>
+                <li>
+                    <a data-toggle="collapse" data-parent="#accordion-small" href="#collapse-social-small" title="Social" class="collapsed">
+                        <i class="fa fa-users padding-small"></i>
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-social-small" class="collapse ">
+                    <li>
+                        <a href="https://github.com/fuzzmz" title="GitHub"><i class="fa fa-github-square fa-lg padding-small"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/+serbanconstantin" title="Google+"><i class="fa fa-google-plus-square fa-lg padding-small"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://feeds.feedburner.com/fuzzmeuk" title="RSS"><i class="fa fa-rss-square fa-lg padding-small"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/fuzzmz" title="Twitter"><i class="fa fa-twitter-square fa-lg padding-small"></i></a>
+                    </li>
+                </ul></li>
+                <li class="nav-divider"></li>
+                <li>
+        <a href="#" title="Back to top" class="collapsed">
+            <span class="fa fa-arrow-up"></span>
+        </a>
+    </li>
+            </ul>
+        </div>
+        <div id="sidebar-wrapper" class="twitchy-background">
+            <ul id="accordion" class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="https://fuzz.me.uk/">
+                            <span class="glyphicon glyphicon-home padding-small"></span>
+                            Home
+                    </a>
+                </li>
+                    <li class="nav-divider"></li>
+                    <li>
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse-latest">
+                            <span class="glyphicon glyphicon-th-list padding-small"></span>
+                            Recent Articles
+                        </a>
+                    </li>
+                    <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
+                        <li class="">
+                            <a class="hide-overflow" href="https://fuzz.me.uk/burn-it-all/" title="Burn it all">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Burn it all
+                            </a>
+                        </li>
+                        <li class="">
+                            <a class="hide-overflow" href="https://fuzz.me.uk/https-now-green/" title="Green URL bar">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Green URL bar
+                            </a>
+                        </li>
+                        <li class="">
+                            <a class="hide-overflow" href="https://fuzz.me.uk/making-private-tests-public/" title="Making private tests public">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Making private tests public
+                            </a>
+                        </li>
+                        <li class="">
+                            <a class="hide-overflow" href="https://fuzz.me.uk/google-photos-shared-albums-annoyances/" title="Google Photos Shared Albums annoyances">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Google Photos Shared Albums annoyances
+                            </a>
+                        </li>
+                        <li class="">
+                            <a class="hide-overflow" href="https://fuzz.me.uk/oh-kernel-my-kernel/" title="Oh kernel, my kernel">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Oh kernel, my kernel
+                            </a>
+                        </li>
+                    <li>
+                        <a href="https://fuzz.me.uk/archives.html">
+                            <i class="fa fa-arrow-right padding-small"></i>
+                            More
+                        </a>
+                    </li>
+                    </ul></li>
+                <li class="nav-divider"></li>
+                <li id="share">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-share" title="Share" class="collapsed">
+                        <i class="fa fa-share-alt padding-small"></i>
+                        Share
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-share" class="sidebar_submenu collapse ">
+                    <li>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=https://fuzz.me.uk/ftpbox-review/" target="popup">
+                            <i class="fa fa-facebook-square padding-small"></i>
+                            Facebook
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/share?url=https://fuzz.me.uk/ftpbox-review/" target="popup">
+                            <i class="fa fa-google-plus padding-small"></i>
+                            Google+
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" target="popup">
+                            <i class="fa fa-twitter-square padding-small"></i>
+                            Twitter
+                        </a>
+                    </li>
+                </ul></li>
+                <li class="nav-divider"></li>
+                <li>
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-social">
+                        <i class="fa fa-users padding-small"></i>
+                        Contact
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-social" class="sidebar_submenu collapse ">
+                    <li>
+                        <a href="https://github.com/fuzzmz" title="GitHub">
+                            <i class="fa fa-github-square fa-lg padding-small"></i>
+                            GitHub
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/+serbanconstantin" title="Google+">
+                            <i class="fa fa-google-plus-square fa-lg padding-small"></i>
+                            Google+
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://feeds.feedburner.com/fuzzmeuk" title="RSS">
+                            <i class="fa fa-rss-square fa-lg padding-small"></i>
+                            RSS
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/fuzzmz" title="Twitter">
+                            <i class="fa fa-twitter-square fa-lg padding-small"></i>
+                            Twitter
+                        </a>
+                    </li>
+                </ul></li>
+                
+                
+                <li class="nav-divider"></li>
+                <li>
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-categories">
+                        <i class="fa fa-folder-open padding-small"></i>
+                        Categories
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-categories" class="sidebar_submenu collapse ">
+                    <li >
+                        <a href="https://fuzz.me.uk/category/debug.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            debug
+                            <span class="badge pull-right categorybadge">14</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="https://fuzz.me.uk/category/how-to.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            how-to
+                            <span class="badge pull-right categorybadge">7</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="https://fuzz.me.uk/category/misc.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            misc
+                            <span class="badge pull-right categorybadge">31</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="https://fuzz.me.uk/category/ux.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            ux
+                            <span class="badge pull-right categorybadge">4</span>
+                        </a>
+                    </li>
+                </ul></li>
+                
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+        <!-- open/close sidebar -->
+        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">
+            <span id="right-arrow" class="glyphicon glyphicon-chevron-right"  title="expand sidebar"></span>
+            <span id="left-arrow" class="glyphicon glyphicon-chevron-left" title="minimize sidebar"></span>
+        </a>
+       <!-- /open/close sidebar -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+<section id="content">
+    <article>
+        <div class="row">
+            <div class="col-lg-9">
+                <header class="page-header">
+                    <h1>
+                        <a href="https://fuzz.me.uk/ftpbox-review/"
+                           rel="bookmark"
+                           title="Permalink to A look at FTPbox">
+                            A look at&nbsp;FTPbox
+                        </a>
+                        <small>
+<div class="post-info">
+    <div class="publish-info-block">
+        <small>
+            <span class="published">
+                <i class="fa fa-calendar padding-small"></i><time datetime="2012-02-22T00:00:00+02:00"> 2012-02-22</time>
+            </span>
+            <span class="category">
+                <i class="fa fa-folder-open padding-small"></i><a href="https://fuzz.me.uk/category/misc.html">misc</a>
+            </span>
+            <span class="tags">
+                <i class="fa fa-tags padding-small"></i>
+                <a href="https://fuzz.me.uk/tag/ftpbox.html">FTPbox</a> /                 <a href="https://fuzz.me.uk/tag/dropbox.html">Dropbox</a> /                 <a href="https://fuzz.me.uk/tag/syncing.html">syncing</a>            </span>
+        </small>
+    </div>
+</div><!-- /.post-info -->                        </small>
+                    </h1>
+                </header>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="entry-content">
+                    <p><img class="img-responsive" src="/images/imported-old/ftpbox.png" style="float:left; padding-right:10px"/></p>
+<p><a href="https://www.dropbox.com/">Dropbox</a> is one of the most well known syncing services, and deservedly so, but one downside is that you have to use their servers for storing data, and with that, the account space limits they have in place. But what if you could use your own server to act as a repository for your synced&nbsp;files?</p>
+<p><a href="http://ftpbox.org/">FTPbox</a> comes to solve just that problem, or at least tries, by offering a way to synchronize your files to your own host, via <span class="caps">FTP</span>. The reason I say tries is that FTPbox is still in beta and has a few problems, some caused by the software itself, others caused by the fact that you&rsquo;re limited by what your hosting provider is offering you (in terms of <span class="caps">FTP</span> availability and&nbsp;options).</p>
+<hr/>
+<h2 id="the-software">The&nbsp;software</h2>
+<p>I&rsquo;d first like to address the problems that are strictly tied to the application. First of all, the version I tested (beta 1.8) wanted to write and read its settings file in the \Program Files\FTPbox directory, which always caused an error and eventually crashed on Windows 7 (and it should act the same on Vista) unless it was being run as administrator, which granted read/write privileges for the Program Files folder. Fortunately, because the application is open-source, I&rsquo;ve submitted a patch which fixes this problem by saving the settings file under %AppData%, where it should&nbsp;belong.</p>
+<p>You also need to use the same location for the sync folder on all computers; if you don&rsquo;t the application will create multiple folders corresponding to the location of the sync folder on the remote computer (see video for more clear&nbsp;example).</p>
+<p>Secondly, it feels sluggish and tends to eat up a lot of resources, which makes me think that the application isn&rsquo;t properly threaded (and the code confirms that to some extent); at first I thought that my .Net Framework 4 install got hosed somehow, but after throwing it in a <span class="caps">VM</span> the problem&nbsp;persisted.</p>
+<p>Another small inconvenience, at least compared to Dropbox, is the fact that it can only watch a single folder, so all the data you want synced must reside in that folder. Add to that the lack of icon overlays to give you visual feedback on the state of the files and folders (syncing, synced, etc.), no indication of the speed of the synchronization process (or a percentage for the current sync) and no shell integration except the tray&nbsp;icon.</p>
+<p>What it does offer though is a web interface to manage your files remotely, which currently consists only of uploading files, deleting them or sharing them with other people. So in short, it&rsquo;s pretty basic at this point in time. I need to stress though that this is still a beta, so a work in progress, and a lot of the things I mentioned above can, and hopefully will get&nbsp;fixed.</p>
+<hr/>
+<h2 id="the-service">The&nbsp;Service</h2>
+<p>Now, the application is only one part of what FTPbox is trying to be, and that is a a synchronizing service. The main problem is that the most important aspects of the service are dependent on your hosting&nbsp;provider.</p>
+<p>The first thing that comes to mind is the available space, which tends not to be that large of a problem, with most hosting services offering hundreds of gigabytes of space. What might become a problem though is the maximum bandwidth allowed: if you&rsquo;re trying to sync really large files on multiple computers you can exhaust your available bandwidth relatively easy, especially if you also want to share those files with other&nbsp;people.</p>
+<p>The second thing is upload speed, which can vary greatly depending on how close you are to the server; if large services tend to use multiple servers scattered throughout the world which get you good speeds, you&rsquo;re stuck with what you have. And even if the speed might be great for you, it might be extremely slow for your friend in the <span class="caps">US</span> with whom you&rsquo;re sharing your files&nbsp;with.</p>
+<p>Another aspect to consider is that other services usually backup their data, which means that if anything goes wrong they still have copies. This isn&rsquo;t that large of an issue though considering that you&rsquo;re syncing the files, so they should exist on at least a computer, which in turn will get synced to the cloud - well, to your&nbsp;server.</p>
+<p>But the most important part is security. Despite being advertised as secure, it&rsquo;s up to your hosting provider to offer <span class="caps">SFTP</span> access for transfer through <span class="caps">SSH</span>, or <span class="caps">FTPS</span> for <span class="caps">TLS</span>/<span class="caps">SSL</span> encryption; in case your hosting provider doesn&rsquo;t offer them it means that your data is sent in the clear and anyone listening it can have access to it. You also need to take into account that the files aren&rsquo;t encrypted on the server, which means that there&rsquo;s the possibility that your server admin can view&nbsp;it.</p>
+<hr/>
+<h2 id="the-video">The&nbsp;video</h2>
+<p>Unfortunately, because the application is currently in beta, there were some problems during the recording of the video. I chose to keep everything as is to show the problems a user might face while using&nbsp;it.</p>
+<p>Please remember though that FTPbox is a work in progress and this not represent the final version of the&nbsp;software.</p>
+<p>Also, sorry for the lack of the mouse cursor, just now noticed that it&rsquo;s&nbsp;missing.</p>
+<iframe allowfullscreen="" frameborder="0" height="360" src="http://www.youtube-nocookie.com/embed/tEzhMorMohU?rel=0" width="640"></iframe>
+                </div>
+                <footer class="text-right">
+                    <p>- fuzzmz</p>
+                </footer>
+    <script data-isso="//discuss.fuzz.me.uk/"
+            data-isso-avatar="false"
+            src="//discuss.fuzz.me.uk/js/embed.min.js"></script>
+
+    <section id="isso-thread"></section>
+            </div>
+    <div id="scrollspy">
+        <div class="col-lg-3 nav nav-stacked hidden-xs hidden-sm" data-spy="affix" data-offset-top="135">
+            <div id="toc"><ul><li><a class="toc-href" href="#" title="A look at&nbsp;FTPbox">A look at&nbsp;FTPbox</a><ul><li><a class="toc-href" href="#the-software" title="The&nbsp;software">The&nbsp;software</a></li><li><a class="toc-href" href="#the-service" title="The&nbsp;Service">The&nbsp;Service</a></li><li><a class="toc-href" href="#the-video" title="The&nbsp;video">The&nbsp;video</a></li></ul></li></ul></div>
+        </div>
+    </div>
+        </div>
+    </article>
+</section>
+<footer>
+    <hr>
+    <div class="row">
+        <div class="col-xs-4 text-left">
+            <p><small>
+                ramblings on tech, life, and randomness by Serban Constantin
+            </small></p>
+        </div>
+        <div class="col-xs-5 text-right">
+            <p><small>
+                Built by <a href="http://docs.getpelican.com/en/latest">Pelican</a> / <a href="https://github.com/ingwinlu/pelican-twitchy">pelican-twitchy</a>
+                &middot;                    &copy; 2016 fuzzmz
+            </small></p>
+        </div>
+    </div>
+</footer>            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+    <!-- jQuery Version 1.11.2 -->
+    <script src="https://fuzz.me.uk/theme/js/jquery-1.11.2.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="https://fuzz.me.uk/theme/js/bootstrap.min.js"></script>
+    <!-- twitchy Script -->
+    <script src="https://fuzz.me.uk/theme/js/pelican_twitchy.min.js"></script>
+
+</body>
+</html>

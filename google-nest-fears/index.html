@@ -1,0 +1,393 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script type="text/javascript">
+        var host = "fuzz.me.uk";
+        if ((host == window.location.host) && (window.location.protocol != "https:"))
+            window.location.protocol = "https";
+    </script>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="author" content="fuzzmz" />
+        <meta name="keywords" content="google,privacy,nest,internet of things" />
+        <meta name="description" content="As you might or might not know, Google is buying Nest (or better said, the company and people behind the Nest product line), and alongside those $3.2 billion that Google is paying came a flood of critique and anger. The thing that makes the Nest products “amazing” is that ..." />
+
+<!-- Open Graph tags -->
+<meta property="og:site_name" content="Fuzzmz | ramblings on tech, life, and randomness by Serban Constantin"/>
+<meta property="twitter:site" content="@fuzzmz"/>
+<meta property="twitter:creator" content="@fuzzmz"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="Get your Google out of my Nest!"/>
+    <meta property="og:url" content="https://fuzz.me.uk/google-nest-fears/"/>
+    <meta property="og:description" content="As you might or might not know, Google is buying Nest (or better said, the company and people behind the Nest product line), and alongside those $3.2 billion that Google is paying came a flood of critique and anger. The thing that makes the Nest products “amazing” is that ..."/>
+    <meta property="article:published_time" content="2014-01-15" />
+    <meta property="article:section" content="misc" />
+        <meta property="article:tag" content="google" />
+        <meta property="article:tag" content="privacy" />
+        <meta property="article:tag" content="nest" />
+        <meta property="article:tag" content="internet of things" />
+        <meta property="article:author" content="fuzzmz" />
+        <meta property="twitter:card" content="summary" />
+
+    <title>Get your Google out of my Nest! - Fuzzmz | ramblings on tech, life, and randomness by Serban Constantin</title>
+
+        <link rel="stylesheet" href="https://fuzz.me.uk/theme/css/bootstrap.sandstone.min.css" type="text/css"/>
+
+    <link href="https://fuzz.me.uk/theme/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="https://fuzz.me.uk/theme/css/pygments/colorful.css" rel="stylesheet" />
+    
+        <link href="https://fuzz.me.uk/theme/css/typogrify.css" rel="stylesheet" />
+    <link href="https://fuzz.me.uk/theme/css/pelican-twitchy.min.css" rel="stylesheet" />
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <!-- Feeds -->
+</head>
+<body data-spy="scroll" data-target="#scrollspy">
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper-small" class="twitchy-background">
+            <ul id="accordion-small" class="sidebar-nav sidebar-nav-small">
+                <li>
+        <a href="https://fuzz.me.uk" title="Fuzzmz | ramblings on tech, life, and randomness by Serban Constantin" class="collapsed">
+            <span class="glyphicon glyphicon-home"></span>
+        </a>
+    </li>
+                <li class="nav-divider"></li>
+                <li>
+        <a href="https://fuzz.me.uk/archives.html" title="Recent Articles" class="collapsed">
+            <span class="glyphicon glyphicon-th-list"></span>
+        </a>
+    </li>
+                
+                <li class="nav-divider"></li>
+                <li id="share-small">
+                    <a data-toggle="collapse" data-parent="#accordion-small" href="#collapse-share-small" title="Share" class="collapsed">
+                        <i class="fa fa-share-alt padding-small"></i>
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-share-small" class="collapse ">
+                    <li>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=https://fuzz.me.uk/google-nest-fears/" title="Share via Facebook" target="popup">
+                            <i class="fa fa-facebook-square padding-small"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/share?url=https://fuzz.me.uk/google-nest-fears/" title="Share via Google+" target="popup">
+                            <i class="fa fa-google-plus padding-small"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" title="Share via Twitter" target="popup">
+                            <i class="fa fa-twitter-square padding-small"></i>
+                        </a>
+                    </li>
+                </ul></li>
+                <li class="nav-divider"></li>
+                <li>
+                    <a data-toggle="collapse" data-parent="#accordion-small" href="#collapse-social-small" title="Social" class="collapsed">
+                        <i class="fa fa-users padding-small"></i>
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-social-small" class="collapse ">
+                    <li>
+                        <a href="https://github.com/fuzzmz" title="GitHub"><i class="fa fa-github-square fa-lg padding-small"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/+serbanconstantin" title="Google+"><i class="fa fa-google-plus-square fa-lg padding-small"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://feeds.feedburner.com/fuzzmeuk" title="RSS"><i class="fa fa-rss-square fa-lg padding-small"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/fuzzmz" title="Twitter"><i class="fa fa-twitter-square fa-lg padding-small"></i></a>
+                    </li>
+                </ul></li>
+                <li class="nav-divider"></li>
+                <li>
+        <a href="#" title="Back to top" class="collapsed">
+            <span class="fa fa-arrow-up"></span>
+        </a>
+    </li>
+            </ul>
+        </div>
+        <div id="sidebar-wrapper" class="twitchy-background">
+            <ul id="accordion" class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="https://fuzz.me.uk/">
+                            <span class="glyphicon glyphicon-home padding-small"></span>
+                            Home
+                    </a>
+                </li>
+                    <li class="nav-divider"></li>
+                    <li>
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse-latest">
+                            <span class="glyphicon glyphicon-th-list padding-small"></span>
+                            Recent Articles
+                        </a>
+                    </li>
+                    <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
+                        <li class="">
+                            <a class="hide-overflow" href="https://fuzz.me.uk/burn-it-all/" title="Burn it all">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Burn it all
+                            </a>
+                        </li>
+                        <li class="">
+                            <a class="hide-overflow" href="https://fuzz.me.uk/https-now-green/" title="Green URL bar">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Green URL bar
+                            </a>
+                        </li>
+                        <li class="">
+                            <a class="hide-overflow" href="https://fuzz.me.uk/making-private-tests-public/" title="Making private tests public">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Making private tests public
+                            </a>
+                        </li>
+                        <li class="">
+                            <a class="hide-overflow" href="https://fuzz.me.uk/google-photos-shared-albums-annoyances/" title="Google Photos Shared Albums annoyances">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Google Photos Shared Albums annoyances
+                            </a>
+                        </li>
+                        <li class="">
+                            <a class="hide-overflow" href="https://fuzz.me.uk/oh-kernel-my-kernel/" title="Oh kernel, my kernel">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Oh kernel, my kernel
+                            </a>
+                        </li>
+                    <li>
+                        <a href="https://fuzz.me.uk/archives.html">
+                            <i class="fa fa-arrow-right padding-small"></i>
+                            More
+                        </a>
+                    </li>
+                    </ul></li>
+                <li class="nav-divider"></li>
+                <li id="share">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-share" title="Share" class="collapsed">
+                        <i class="fa fa-share-alt padding-small"></i>
+                        Share
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-share" class="sidebar_submenu collapse ">
+                    <li>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=https://fuzz.me.uk/google-nest-fears/" target="popup">
+                            <i class="fa fa-facebook-square padding-small"></i>
+                            Facebook
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/share?url=https://fuzz.me.uk/google-nest-fears/" target="popup">
+                            <i class="fa fa-google-plus padding-small"></i>
+                            Google+
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" target="popup">
+                            <i class="fa fa-twitter-square padding-small"></i>
+                            Twitter
+                        </a>
+                    </li>
+                </ul></li>
+                <li class="nav-divider"></li>
+                <li>
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-social">
+                        <i class="fa fa-users padding-small"></i>
+                        Contact
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-social" class="sidebar_submenu collapse ">
+                    <li>
+                        <a href="https://github.com/fuzzmz" title="GitHub">
+                            <i class="fa fa-github-square fa-lg padding-small"></i>
+                            GitHub
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/+serbanconstantin" title="Google+">
+                            <i class="fa fa-google-plus-square fa-lg padding-small"></i>
+                            Google+
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://feeds.feedburner.com/fuzzmeuk" title="RSS">
+                            <i class="fa fa-rss-square fa-lg padding-small"></i>
+                            RSS
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/fuzzmz" title="Twitter">
+                            <i class="fa fa-twitter-square fa-lg padding-small"></i>
+                            Twitter
+                        </a>
+                    </li>
+                </ul></li>
+                
+                
+                <li class="nav-divider"></li>
+                <li>
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-categories">
+                        <i class="fa fa-folder-open padding-small"></i>
+                        Categories
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-categories" class="sidebar_submenu collapse ">
+                    <li >
+                        <a href="https://fuzz.me.uk/category/debug.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            debug
+                            <span class="badge pull-right categorybadge">14</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="https://fuzz.me.uk/category/how-to.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            how-to
+                            <span class="badge pull-right categorybadge">7</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="https://fuzz.me.uk/category/misc.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            misc
+                            <span class="badge pull-right categorybadge">31</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="https://fuzz.me.uk/category/ux.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            ux
+                            <span class="badge pull-right categorybadge">4</span>
+                        </a>
+                    </li>
+                </ul></li>
+                
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+        <!-- open/close sidebar -->
+        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">
+            <span id="right-arrow" class="glyphicon glyphicon-chevron-right"  title="expand sidebar"></span>
+            <span id="left-arrow" class="glyphicon glyphicon-chevron-left" title="minimize sidebar"></span>
+        </a>
+       <!-- /open/close sidebar -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+<section id="content">
+    <article>
+        <div class="row">
+            <div class="col-lg-9">
+                <header class="page-header">
+                    <h1>
+                        <a href="https://fuzz.me.uk/google-nest-fears/"
+                           rel="bookmark"
+                           title="Permalink to Get your Google out of my Nest!">
+                            Get your Google out of my&nbsp;Nest!
+                        </a>
+                        <small>
+<div class="post-info">
+    <div class="publish-info-block">
+        <small>
+            <span class="published">
+                <i class="fa fa-calendar padding-small"></i><time datetime="2014-01-15T00:00:00+02:00"> 2014-01-15</time>
+            </span>
+            <span class="category">
+                <i class="fa fa-folder-open padding-small"></i><a href="https://fuzz.me.uk/category/misc.html">misc</a>
+            </span>
+            <span class="tags">
+                <i class="fa fa-tags padding-small"></i>
+                <a href="https://fuzz.me.uk/tag/google.html">google</a> /                 <a href="https://fuzz.me.uk/tag/privacy.html">privacy</a> /                 <a href="https://fuzz.me.uk/tag/nest.html">nest</a> /                 <a href="https://fuzz.me.uk/tag/internet-of-things.html">internet of things</a>            </span>
+        </small>
+    </div>
+</div><!-- /.post-info -->                        </small>
+                    </h1>
+                </header>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="entry-content">
+                    <p>As you might or might not know, Google is buying Nest (or better said, the company and people behind the Nest product line), and alongside those $3.2 billion that Google is paying came a flood of critique and&nbsp;anger.</p>
+<p>The thing that makes the Nest products <em>&ldquo;amazing&rdquo;</em> is that they&rsquo;re one of the first consumer oriented products that go hand in with with the <em>internet of things</em> moniker that seems to be all the rage; see, their learning thermostat and smart smoke detector are connected devices, which means that they gather data and monitor your usage (and presence) to automatically make things better, like heating your house when you&rsquo;re around but cooling it when you&rsquo;re not, so you end up using less&nbsp;power.</p>
+<p>Now, all was fine and dandy when that data went to Nest, but now that Google has acquired them it&rsquo;s time to get our&nbsp;pitchforks!</p>
+<hr/>
+<blockquote>
+<p>So people are ok with Google creating a sophisticated algorithm of their life, utilizing <span class="caps">GPS</span> and other tracking technologies (which of course will be used to create customized ads to sell the user products and services) to save them a few bucks on their power bill&hellip;yet people are paranoid about the <span class="caps">NSA</span>. Does not&nbsp;compute.</p>
+</blockquote>
+<p>If the <span class="caps">NSA</span> tracking improved my life in an actual measurable way then I&rsquo;d reassess my views on <span class="caps">NSA</span> tracking; as it stands now, I&rsquo;m ok with the exchange between the personal information I chose to share with Google and the services they&nbsp;provide.</p>
+<p>And here is the major flaw of your analogy: I am in charge of what to share with Google compared to what I share with the <span class="caps">NSA</span>.</p>
+<blockquote>
+<p>But the <span class="caps">NSA</span> as part of the <span class="caps">US</span> Government is ultimately accountable to its citizens, whereas Google is only accountable to its&nbsp;shareholders.</p>
+</blockquote>
+<p>That&rsquo;s nonsense. Google has to obey the law in all the countries it operates in, therefore it is accountable to a lot more people and bodies than only the shareholders, and that is a hell of a lot more than the <span class="caps">NSA</span> is accountable to, which appears to be basically&nbsp;nobody.</p>
+<blockquote>
+<p>Don&rsquo;t you know that when it comes to Google you <strong>are</strong> the product? They&rsquo;ll just sell that data and make a pretty&nbsp;penny!</p>
+</blockquote>
+<p>This is a really shitty if not false way of putting it. Google makes ~50% of its revenue off of ads it sells on its own sites: ~35% off of network ads, 8% off other, and 7% or so running&nbsp;Motorola.</p>
+<p>It does not &ldquo;sell&rdquo; user data, it sells ads, primarily targeting users of Google&rsquo;s services but also targeting people just browsing the internet in&nbsp;general.</p>
+<p>It sells ad <em>space</em>, mainly, much like a publication, and it sells them in a similar manner to how publications do. Sports pages in the newspaper don&rsquo;t have feminine hygiene products among the ads, for instance. Google does the same for companies by targeting the ads they want to buy toward people and places that fit the&nbsp;demographics.</p>
+<p>The distinction there is that Google retains the data it has been given or inferred about its users (all of which can be viewed on their Ad Preferences site). The ad tools Google has allows advertisers to choose demographics, but they don&rsquo;t get access to raw user data ever. It&rsquo;s not like going out and buying a mailing list, the advertisers get absolutely no personally identifiable information from their ad&nbsp;viewers/clickers.</p>
+<p>Advertising company: yes. Data brokerage: no. The latter claim would be far more fairly made against Facebook or any of the other social networking companies than against&nbsp;Google.</p>
+<blockquote>
+<p>Nest tracks! It has a microphone, to detect whether people are home, how many, etc. I do not worry that it&rsquo;s a bug or anything, just that I do not feel right about G knowing the comings and&nbsp;goings.</p>
+</blockquote>
+<p>How confident are you that they don&rsquo;t already have this information? Got a smartphone and home wifi? Any apps at all that use a Google&nbsp;login?</p>
+<p>Realistically, more than a few companies know when the average American/European enters or leaves their home. A simple proximity sensor on a thermostat which can&rsquo;t even distinguish individual people is basically irrelevant in that it provides negligible new&nbsp;information.</p>
+<hr/>
+<p>I&rsquo;ve never quite understood what the scariness is about a company targeting me with good ads. And, especially as it&rsquo;s a voluntary arrangement, I don&rsquo;t see what the beef is. Google is actually far ahead here, providing services to let you pull all your data from them, as well as ask for all sorts of collected data to be&nbsp;deleted.</p>
+<p>Like with any company I do business with, there&rsquo;s a mutually beneficial relationship happening. I provide Google with something they find valuable and I&rsquo;m ok with giving, and they provide me with someone I find valuable and they&rsquo;re willing to&nbsp;give.</p>
+<p>In this case, it&rsquo;s valuable services in exchange for tailored ads. Try as a might&hellip; I simply can&rsquo;t find anything to be upset about&nbsp;there.</p>
+<p>And, to be frank, this is how Google has operated literally for the last decade. And it&rsquo;s never been a secret. Search, Mail, etc. have been open and upfront about the exchange of a quality service for ads. Google literally has billions of customers and handles billions of requests <em>a day</em>. Clearly this simply is not, and has never been an issue. They have shown that they can handle the data responsibly, and customers have shown that they&rsquo;re ok with the&nbsp;balance.</p>
+                </div>
+                <footer class="text-right">
+                    <p>- fuzzmz</p>
+                </footer>
+    <script data-isso="//discuss.fuzz.me.uk/"
+            data-isso-avatar="false"
+            src="//discuss.fuzz.me.uk/js/embed.min.js"></script>
+
+    <section id="isso-thread"></section>
+            </div>
+        </div>
+    </article>
+</section>
+<footer>
+    <hr>
+    <div class="row">
+        <div class="col-xs-4 text-left">
+            <p><small>
+                ramblings on tech, life, and randomness by Serban Constantin
+            </small></p>
+        </div>
+        <div class="col-xs-5 text-right">
+            <p><small>
+                Built by <a href="http://docs.getpelican.com/en/latest">Pelican</a> / <a href="https://github.com/ingwinlu/pelican-twitchy">pelican-twitchy</a>
+                &middot;                    &copy; 2016 fuzzmz
+            </small></p>
+        </div>
+    </div>
+</footer>            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+    <!-- jQuery Version 1.11.2 -->
+    <script src="https://fuzz.me.uk/theme/js/jquery-1.11.2.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="https://fuzz.me.uk/theme/js/bootstrap.min.js"></script>
+    <!-- twitchy Script -->
+    <script src="https://fuzz.me.uk/theme/js/pelican_twitchy.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,397 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script type="text/javascript">
+        var host = "fuzz.me.uk";
+        if ((host == window.location.host) && (window.location.protocol != "https:"))
+            window.location.protocol = "https";
+    </script>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="author" content="fuzzmz" />
+        <meta name="keywords" content="security,bash,shellshock" />
+        <meta name="description" content="If you’ve kept an ear to the Internet for the past two days or so you’ve most likely heard about the latest exploit running wild, Shellshock, it basically is remote code execution via Bash. You can find more information about the exploit here. Now, most distros will issue ..." />
+
+<!-- Open Graph tags -->
+<meta property="og:site_name" content="Fuzzmz | ramblings on tech, life, and randomness by Serban Constantin"/>
+<meta property="twitter:site" content="@fuzzmz"/>
+<meta property="twitter:creator" content="@fuzzmz"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="Patch your shell"/>
+    <meta property="og:url" content="https://fuzz.me.uk/patch-your-shell/"/>
+    <meta property="og:description" content="If you’ve kept an ear to the Internet for the past two days or so you’ve most likely heard about the latest exploit running wild, Shellshock, it basically is remote code execution via Bash. You can find more information about the exploit here. Now, most distros will issue ..."/>
+    <meta property="article:published_time" content="2014-09-26" />
+    <meta property="article:section" content="debug" />
+        <meta property="article:tag" content="security" />
+        <meta property="article:tag" content="bash" />
+        <meta property="article:tag" content="shellshock" />
+        <meta property="article:author" content="fuzzmz" />
+        <meta property="twitter:card" content="summary" />
+
+    <title>Patch your shell - Fuzzmz | ramblings on tech, life, and randomness by Serban Constantin</title>
+
+        <link rel="stylesheet" href="https://fuzz.me.uk/theme/css/bootstrap.sandstone.min.css" type="text/css"/>
+
+    <link href="https://fuzz.me.uk/theme/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="https://fuzz.me.uk/theme/css/pygments/colorful.css" rel="stylesheet" />
+    
+        <link href="https://fuzz.me.uk/theme/css/typogrify.css" rel="stylesheet" />
+    <link href="https://fuzz.me.uk/theme/css/pelican-twitchy.min.css" rel="stylesheet" />
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <!-- Feeds -->
+</head>
+<body data-spy="scroll" data-target="#scrollspy">
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper-small" class="twitchy-background">
+            <ul id="accordion-small" class="sidebar-nav sidebar-nav-small">
+                <li>
+        <a href="https://fuzz.me.uk" title="Fuzzmz | ramblings on tech, life, and randomness by Serban Constantin" class="collapsed">
+            <span class="glyphicon glyphicon-home"></span>
+        </a>
+    </li>
+                <li class="nav-divider"></li>
+                <li>
+        <a href="https://fuzz.me.uk/archives.html" title="Recent Articles" class="collapsed">
+            <span class="glyphicon glyphicon-th-list"></span>
+        </a>
+    </li>
+                
+                <li class="nav-divider"></li>
+                <li id="share-small">
+                    <a data-toggle="collapse" data-parent="#accordion-small" href="#collapse-share-small" title="Share" class="collapsed">
+                        <i class="fa fa-share-alt padding-small"></i>
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-share-small" class="collapse ">
+                    <li>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=https://fuzz.me.uk/patch-your-shell/" title="Share via Facebook" target="popup">
+                            <i class="fa fa-facebook-square padding-small"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/share?url=https://fuzz.me.uk/patch-your-shell/" title="Share via Google+" target="popup">
+                            <i class="fa fa-google-plus padding-small"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" title="Share via Twitter" target="popup">
+                            <i class="fa fa-twitter-square padding-small"></i>
+                        </a>
+                    </li>
+                </ul></li>
+                <li class="nav-divider"></li>
+                <li>
+                    <a data-toggle="collapse" data-parent="#accordion-small" href="#collapse-social-small" title="Social" class="collapsed">
+                        <i class="fa fa-users padding-small"></i>
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-social-small" class="collapse ">
+                    <li>
+                        <a href="https://github.com/fuzzmz" title="GitHub"><i class="fa fa-github-square fa-lg padding-small"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/+serbanconstantin" title="Google+"><i class="fa fa-google-plus-square fa-lg padding-small"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://feeds.feedburner.com/fuzzmeuk" title="RSS"><i class="fa fa-rss-square fa-lg padding-small"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/fuzzmz" title="Twitter"><i class="fa fa-twitter-square fa-lg padding-small"></i></a>
+                    </li>
+                </ul></li>
+                <li class="nav-divider"></li>
+                <li>
+        <a href="#" title="Back to top" class="collapsed">
+            <span class="fa fa-arrow-up"></span>
+        </a>
+    </li>
+            </ul>
+        </div>
+        <div id="sidebar-wrapper" class="twitchy-background">
+            <ul id="accordion" class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="https://fuzz.me.uk/">
+                            <span class="glyphicon glyphicon-home padding-small"></span>
+                            Home
+                    </a>
+                </li>
+                    <li class="nav-divider"></li>
+                    <li>
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse-latest">
+                            <span class="glyphicon glyphicon-th-list padding-small"></span>
+                            Recent Articles
+                        </a>
+                    </li>
+                    <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
+                        <li class="">
+                            <a class="hide-overflow" href="https://fuzz.me.uk/burn-it-all/" title="Burn it all">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Burn it all
+                            </a>
+                        </li>
+                        <li class="">
+                            <a class="hide-overflow" href="https://fuzz.me.uk/https-now-green/" title="Green URL bar">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Green URL bar
+                            </a>
+                        </li>
+                        <li class="">
+                            <a class="hide-overflow" href="https://fuzz.me.uk/making-private-tests-public/" title="Making private tests public">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Making private tests public
+                            </a>
+                        </li>
+                        <li class="">
+                            <a class="hide-overflow" href="https://fuzz.me.uk/google-photos-shared-albums-annoyances/" title="Google Photos Shared Albums annoyances">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Google Photos Shared Albums annoyances
+                            </a>
+                        </li>
+                        <li class="">
+                            <a class="hide-overflow" href="https://fuzz.me.uk/oh-kernel-my-kernel/" title="Oh kernel, my kernel">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Oh kernel, my kernel
+                            </a>
+                        </li>
+                    <li>
+                        <a href="https://fuzz.me.uk/archives.html">
+                            <i class="fa fa-arrow-right padding-small"></i>
+                            More
+                        </a>
+                    </li>
+                    </ul></li>
+                <li class="nav-divider"></li>
+                <li id="share">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-share" title="Share" class="collapsed">
+                        <i class="fa fa-share-alt padding-small"></i>
+                        Share
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-share" class="sidebar_submenu collapse ">
+                    <li>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=https://fuzz.me.uk/patch-your-shell/" target="popup">
+                            <i class="fa fa-facebook-square padding-small"></i>
+                            Facebook
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/share?url=https://fuzz.me.uk/patch-your-shell/" target="popup">
+                            <i class="fa fa-google-plus padding-small"></i>
+                            Google+
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" target="popup">
+                            <i class="fa fa-twitter-square padding-small"></i>
+                            Twitter
+                        </a>
+                    </li>
+                </ul></li>
+                <li class="nav-divider"></li>
+                <li>
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-social">
+                        <i class="fa fa-users padding-small"></i>
+                        Contact
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-social" class="sidebar_submenu collapse ">
+                    <li>
+                        <a href="https://github.com/fuzzmz" title="GitHub">
+                            <i class="fa fa-github-square fa-lg padding-small"></i>
+                            GitHub
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/+serbanconstantin" title="Google+">
+                            <i class="fa fa-google-plus-square fa-lg padding-small"></i>
+                            Google+
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://feeds.feedburner.com/fuzzmeuk" title="RSS">
+                            <i class="fa fa-rss-square fa-lg padding-small"></i>
+                            RSS
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/fuzzmz" title="Twitter">
+                            <i class="fa fa-twitter-square fa-lg padding-small"></i>
+                            Twitter
+                        </a>
+                    </li>
+                </ul></li>
+                
+                
+                <li class="nav-divider"></li>
+                <li>
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-categories">
+                        <i class="fa fa-folder-open padding-small"></i>
+                        Categories
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-categories" class="sidebar_submenu collapse ">
+                    <li class="active">
+                        <a href="https://fuzz.me.uk/category/debug.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            debug
+                            <span class="badge pull-right categorybadge">14</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="https://fuzz.me.uk/category/how-to.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            how-to
+                            <span class="badge pull-right categorybadge">7</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="https://fuzz.me.uk/category/misc.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            misc
+                            <span class="badge pull-right categorybadge">31</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="https://fuzz.me.uk/category/ux.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            ux
+                            <span class="badge pull-right categorybadge">4</span>
+                        </a>
+                    </li>
+                </ul></li>
+                
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+        <!-- open/close sidebar -->
+        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">
+            <span id="right-arrow" class="glyphicon glyphicon-chevron-right"  title="expand sidebar"></span>
+            <span id="left-arrow" class="glyphicon glyphicon-chevron-left" title="minimize sidebar"></span>
+        </a>
+       <!-- /open/close sidebar -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+<section id="content">
+    <article>
+        <div class="row">
+            <div class="col-lg-9">
+                <header class="page-header">
+                    <h1>
+                        <a href="https://fuzz.me.uk/patch-your-shell/"
+                           rel="bookmark"
+                           title="Permalink to Patch your shell">
+                            Patch your&nbsp;shell
+                        </a>
+                        <small>
+<div class="post-info">
+    <div class="publish-info-block">
+        <small>
+            <span class="published">
+                <i class="fa fa-calendar padding-small"></i><time datetime="2014-09-26T00:00:00+03:00"> 2014-09-26</time>
+            </span>
+            <span class="category">
+                <i class="fa fa-folder-open padding-small"></i><a href="https://fuzz.me.uk/category/debug.html">debug</a>
+            </span>
+            <span class="tags">
+                <i class="fa fa-tags padding-small"></i>
+                <a href="https://fuzz.me.uk/tag/security.html">security</a> /                 <a href="https://fuzz.me.uk/tag/bash.html">bash</a> /                 <a href="https://fuzz.me.uk/tag/shellshock.html">shellshock</a>            </span>
+        </small>
+    </div>
+</div><!-- /.post-info -->                        </small>
+                    </h1>
+                </header>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="entry-content">
+                    <p>If you&rsquo;ve kept an ear to the Internet for the past two days or so you&rsquo;ve most likely heard about the latest exploit running wild, Shellshock, it basically is remote code execution via Bash. You can find more information about the exploit <a href="http://www.troyhunt.com/2014/09/everything-you-need-to-know-about.html">here</a>.</p>
+<p>Now, most distros will issue patches to fix this, but if you don&rsquo;t want to wait for those, or if you&rsquo;re running a distro that&rsquo;s no longer supported you can patch Bash&nbsp;yourself.</p>
+<p>For those running a Debian based distro (though this should work across the board) you can check if you&rsquo;re vulnerable&nbsp;using:</p>
+<div class="highlight"><pre><span></span>$ env <span class="nv">var</span><span class="o">=</span><span class="s1">'() { ignore this;}; echo uhoh'</span> bash -c /bin/true
+</pre></div>
+<p>If you get a response of <code>uhoh</code> you&rsquo;re&nbsp;vulnerable.</p>
+<hr/>
+<p>The&nbsp;fix</p>
+<p>We&rsquo;re going to download the latest Bash source, apply the available patches and then compile&nbsp;everything.</p>
+<p>Just write the code bellow in an update_bash.sh file and run it as&nbsp;root</p>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env bash</span>
+mkdir bash_source
+<span class="nb">cd</span> bash_source
+wget http://ftp.gnu.org/gnu/bash/bash-4.3.tar.gz
+<span class="c1">#download all patches</span>
+<span class="k">for</span> i in <span class="k">$(</span>seq -f <span class="s2">"%03g"</span> <span class="m">0</span> 29<span class="k">)</span><span class="p">;</span> <span class="k">do</span> wget http://ftp.gnu.org/gnu/bash/bash-4.3-patches/bash43-<span class="nv">$i</span><span class="p">;</span> <span class="k">done</span>
+tar zxvf bash-4.3.tar.gz
+<span class="nb">cd</span> bash-4.3
+<span class="c1">#apply all patches</span>
+<span class="k">for</span> i in <span class="k">$(</span>seq -f <span class="s2">"%03g"</span> <span class="m">0</span> 29<span class="k">)</span><span class="p">;</span><span class="k">do</span> patch -p0 &lt; ../bash43-<span class="nv">$i</span><span class="p">;</span> <span class="k">done</span>
+<span class="c1">#build and install</span>
+./configure
+make
+make install
+<span class="nb">cd</span> ..
+<span class="nb">cd</span> ..
+rm -r bash_source
+</pre></div>
+<p>You can now retest to see if you&rsquo;re&nbsp;vulnerable:</p>
+<div class="highlight"><pre><span></span>$ env <span class="nv">var</span><span class="o">=</span><span class="s1">'() { ignore this;}; echo uhoh'</span> bash -c /bin/true
+</pre></div>
+<p>If you get the following response then you&rsquo;re&nbsp;safe.</p>
+<div class="highlight"><pre><span></span><span class="n">bash</span><span class="o">:</span> <span class="n">warning</span><span class="o">:</span> <span class="n">var</span><span class="o">:</span> <span class="n">ignoring</span> <span class="kd">function</span> <span class="n">definition</span> <span class="n">attempt</span>
+<span class="n">bash</span><span class="o">:</span> <span class="n">error</span> <span class="n">importing</span> <span class="kd">function</span> <span class="n">definition</span> <span class="k">for</span> <span class="s1">'var'</span>
+</pre></div>
+<p>Please note though that the patches issued so far don&rsquo;t completely fix the exploit, but make it harder for your system to be&nbsp;compromised.</p>
+                </div>
+                <footer class="text-right">
+                    <p>- fuzzmz</p>
+                </footer>
+    <script data-isso="//discuss.fuzz.me.uk/"
+            data-isso-avatar="false"
+            src="//discuss.fuzz.me.uk/js/embed.min.js"></script>
+
+    <section id="isso-thread"></section>
+            </div>
+        </div>
+    </article>
+</section>
+<footer>
+    <hr>
+    <div class="row">
+        <div class="col-xs-4 text-left">
+            <p><small>
+                ramblings on tech, life, and randomness by Serban Constantin
+            </small></p>
+        </div>
+        <div class="col-xs-5 text-right">
+            <p><small>
+                Built by <a href="http://docs.getpelican.com/en/latest">Pelican</a> / <a href="https://github.com/ingwinlu/pelican-twitchy">pelican-twitchy</a>
+                &middot;                    &copy; 2016 fuzzmz
+            </small></p>
+        </div>
+    </div>
+</footer>            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+    <!-- jQuery Version 1.11.2 -->
+    <script src="https://fuzz.me.uk/theme/js/jquery-1.11.2.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="https://fuzz.me.uk/theme/js/bootstrap.min.js"></script>
+    <!-- twitchy Script -->
+    <script src="https://fuzz.me.uk/theme/js/pelican_twitchy.min.js"></script>
+
+</body>
+</html>

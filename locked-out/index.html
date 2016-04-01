@@ -1,0 +1,419 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script type="text/javascript">
+        var host = "fuzz.me.uk";
+        if ((host == window.location.host) && (window.location.protocol != "https:"))
+            window.location.protocol = "https";
+    </script>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="author" content="fuzzmz" />
+        <meta name="keywords" content="Linux,d'oh" />
+        <meta name="description" content="A foreword As you may not know, I’m mostly a Microsoft tech junkie venturing into the wonderful world of Linux. I’ve visited this land from time to time, but never had the time or motivation to try and settle in, but all this is about to change as ..." />
+
+<!-- Open Graph tags -->
+<meta property="og:site_name" content="Fuzzmz | ramblings on tech, life, and randomness by Serban Constantin"/>
+<meta property="twitter:site" content="@fuzzmz"/>
+<meta property="twitter:creator" content="@fuzzmz"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="Lockout: no pass, no key"/>
+    <meta property="og:url" content="https://fuzz.me.uk/locked-out/"/>
+    <meta property="og:description" content="A foreword As you may not know, I’m mostly a Microsoft tech junkie venturing into the wonderful world of Linux. I’ve visited this land from time to time, but never had the time or motivation to try and settle in, but all this is about to change as ..."/>
+    <meta property="article:published_time" content="2012-01-19" />
+    <meta property="article:section" content="misc" />
+        <meta property="article:tag" content="Linux" />
+        <meta property="article:tag" content="d'oh" />
+        <meta property="article:author" content="fuzzmz" />
+        <meta property="twitter:card" content="summary" />
+
+    <title>Lockout: no pass, no key - Fuzzmz | ramblings on tech, life, and randomness by Serban Constantin</title>
+
+        <link rel="stylesheet" href="https://fuzz.me.uk/theme/css/bootstrap.sandstone.min.css" type="text/css"/>
+
+    <link href="https://fuzz.me.uk/theme/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="https://fuzz.me.uk/theme/css/pygments/colorful.css" rel="stylesheet" />
+    
+        <link href="https://fuzz.me.uk/theme/css/typogrify.css" rel="stylesheet" />
+    <link href="https://fuzz.me.uk/theme/css/pelican-twitchy.min.css" rel="stylesheet" />
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <!-- Feeds -->
+</head>
+<body data-spy="scroll" data-target="#scrollspy">
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper-small" class="twitchy-background">
+            <ul id="accordion-small" class="sidebar-nav sidebar-nav-small">
+                <li>
+        <a href="https://fuzz.me.uk" title="Fuzzmz | ramblings on tech, life, and randomness by Serban Constantin" class="collapsed">
+            <span class="glyphicon glyphicon-home"></span>
+        </a>
+    </li>
+                <li class="nav-divider"></li>
+                <li>
+        <a href="https://fuzz.me.uk/archives.html" title="Recent Articles" class="collapsed">
+            <span class="glyphicon glyphicon-th-list"></span>
+        </a>
+    </li>
+                
+                <li class="nav-divider"></li>
+                <li id="share-small">
+                    <a data-toggle="collapse" data-parent="#accordion-small" href="#collapse-share-small" title="Share" class="collapsed">
+                        <i class="fa fa-share-alt padding-small"></i>
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-share-small" class="collapse ">
+                    <li>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=https://fuzz.me.uk/locked-out/" title="Share via Facebook" target="popup">
+                            <i class="fa fa-facebook-square padding-small"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/share?url=https://fuzz.me.uk/locked-out/" title="Share via Google+" target="popup">
+                            <i class="fa fa-google-plus padding-small"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" title="Share via Twitter" target="popup">
+                            <i class="fa fa-twitter-square padding-small"></i>
+                        </a>
+                    </li>
+                </ul></li>
+                <li class="nav-divider"></li>
+                <li>
+                    <a data-toggle="collapse" data-parent="#accordion-small" href="#collapse-social-small" title="Social" class="collapsed">
+                        <i class="fa fa-users padding-small"></i>
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-social-small" class="collapse ">
+                    <li>
+                        <a href="https://github.com/fuzzmz" title="GitHub"><i class="fa fa-github-square fa-lg padding-small"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/+serbanconstantin" title="Google+"><i class="fa fa-google-plus-square fa-lg padding-small"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://feeds.feedburner.com/fuzzmeuk" title="RSS"><i class="fa fa-rss-square fa-lg padding-small"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/fuzzmz" title="Twitter"><i class="fa fa-twitter-square fa-lg padding-small"></i></a>
+                    </li>
+                </ul></li>
+                <li class="nav-divider"></li>
+                <li>
+        <a href="#" title="Back to top" class="collapsed">
+            <span class="fa fa-arrow-up"></span>
+        </a>
+    </li>
+            </ul>
+        </div>
+        <div id="sidebar-wrapper" class="twitchy-background">
+            <ul id="accordion" class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="https://fuzz.me.uk/">
+                            <span class="glyphicon glyphicon-home padding-small"></span>
+                            Home
+                    </a>
+                </li>
+                    <li class="nav-divider"></li>
+                    <li>
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse-latest">
+                            <span class="glyphicon glyphicon-th-list padding-small"></span>
+                            Recent Articles
+                        </a>
+                    </li>
+                    <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
+                        <li class="">
+                            <a class="hide-overflow" href="https://fuzz.me.uk/burn-it-all/" title="Burn it all">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Burn it all
+                            </a>
+                        </li>
+                        <li class="">
+                            <a class="hide-overflow" href="https://fuzz.me.uk/https-now-green/" title="Green URL bar">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Green URL bar
+                            </a>
+                        </li>
+                        <li class="">
+                            <a class="hide-overflow" href="https://fuzz.me.uk/making-private-tests-public/" title="Making private tests public">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Making private tests public
+                            </a>
+                        </li>
+                        <li class="">
+                            <a class="hide-overflow" href="https://fuzz.me.uk/google-photos-shared-albums-annoyances/" title="Google Photos Shared Albums annoyances">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Google Photos Shared Albums annoyances
+                            </a>
+                        </li>
+                        <li class="">
+                            <a class="hide-overflow" href="https://fuzz.me.uk/oh-kernel-my-kernel/" title="Oh kernel, my kernel">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Oh kernel, my kernel
+                            </a>
+                        </li>
+                    <li>
+                        <a href="https://fuzz.me.uk/archives.html">
+                            <i class="fa fa-arrow-right padding-small"></i>
+                            More
+                        </a>
+                    </li>
+                    </ul></li>
+                <li class="nav-divider"></li>
+                <li id="share">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-share" title="Share" class="collapsed">
+                        <i class="fa fa-share-alt padding-small"></i>
+                        Share
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-share" class="sidebar_submenu collapse ">
+                    <li>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=https://fuzz.me.uk/locked-out/" target="popup">
+                            <i class="fa fa-facebook-square padding-small"></i>
+                            Facebook
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/share?url=https://fuzz.me.uk/locked-out/" target="popup">
+                            <i class="fa fa-google-plus padding-small"></i>
+                            Google+
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" target="popup">
+                            <i class="fa fa-twitter-square padding-small"></i>
+                            Twitter
+                        </a>
+                    </li>
+                </ul></li>
+                <li class="nav-divider"></li>
+                <li>
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-social">
+                        <i class="fa fa-users padding-small"></i>
+                        Contact
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-social" class="sidebar_submenu collapse ">
+                    <li>
+                        <a href="https://github.com/fuzzmz" title="GitHub">
+                            <i class="fa fa-github-square fa-lg padding-small"></i>
+                            GitHub
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/+serbanconstantin" title="Google+">
+                            <i class="fa fa-google-plus-square fa-lg padding-small"></i>
+                            Google+
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://feeds.feedburner.com/fuzzmeuk" title="RSS">
+                            <i class="fa fa-rss-square fa-lg padding-small"></i>
+                            RSS
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/fuzzmz" title="Twitter">
+                            <i class="fa fa-twitter-square fa-lg padding-small"></i>
+                            Twitter
+                        </a>
+                    </li>
+                </ul></li>
+                
+                
+                <li class="nav-divider"></li>
+                <li>
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-categories">
+                        <i class="fa fa-folder-open padding-small"></i>
+                        Categories
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-categories" class="sidebar_submenu collapse ">
+                    <li >
+                        <a href="https://fuzz.me.uk/category/debug.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            debug
+                            <span class="badge pull-right categorybadge">14</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="https://fuzz.me.uk/category/how-to.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            how-to
+                            <span class="badge pull-right categorybadge">7</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="https://fuzz.me.uk/category/misc.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            misc
+                            <span class="badge pull-right categorybadge">31</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="https://fuzz.me.uk/category/ux.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            ux
+                            <span class="badge pull-right categorybadge">4</span>
+                        </a>
+                    </li>
+                </ul></li>
+                
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+        <!-- open/close sidebar -->
+        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">
+            <span id="right-arrow" class="glyphicon glyphicon-chevron-right"  title="expand sidebar"></span>
+            <span id="left-arrow" class="glyphicon glyphicon-chevron-left" title="minimize sidebar"></span>
+        </a>
+       <!-- /open/close sidebar -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+<section id="content">
+    <article>
+        <div class="row">
+            <div class="col-lg-9">
+                <header class="page-header">
+                    <h1>
+                        <a href="https://fuzz.me.uk/locked-out/"
+                           rel="bookmark"
+                           title="Permalink to Lockout: no pass, no key">
+                            Lockout: no pass, no&nbsp;key
+                        </a>
+                        <small>
+<div class="post-info">
+    <div class="publish-info-block">
+        <small>
+            <span class="published">
+                <i class="fa fa-calendar padding-small"></i><time datetime="2012-01-19T23:52:00+02:00"> 2012-01-19</time>
+            </span>
+            <span class="category">
+                <i class="fa fa-folder-open padding-small"></i><a href="https://fuzz.me.uk/category/misc.html">misc</a>
+            </span>
+            <span class="tags">
+                <i class="fa fa-tags padding-small"></i>
+                <a href="https://fuzz.me.uk/tag/linux.html">Linux</a> /                 <a href="https://fuzz.me.uk/tag/doh.html">d'oh</a>            </span>
+        </small>
+    </div>
+</div><!-- /.post-info -->                        </small>
+                    </h1>
+                </header>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="entry-content">
+                    <h2 id="a-foreword">A&nbsp;foreword</h2>
+<p>As you may not know, I&rsquo;m mostly a Microsoft tech junkie venturing into the wonderful world of Linux. I&rsquo;ve visited this land from time to time, but never had the time or motivation to try and settle in, but all this is about to change as one of my New Years resolutions was to get my hands dirty in&nbsp;Linux.</p>
+<p>Every new beginning is a learning experience, and what better way to learn than from the mistakes made (and the process of trying to fix them)? With this, I bring you my first - and probably not last - embarrassing&nbsp;story.</p>
+<hr/>
+<h2 id="the-idea">The&nbsp;idea</h2>
+<p>The goal was noble: <em>try and make my <span class="caps">VPS</span> as secure as possible</em>. And what better way to achieve this than to disable ssh password authentication, only allowing users to connect with public key&nbsp;authentication?</p>
+<p>In the end, it was simple! All I had to do was modify <strong>/etc/ssh/sshd_config</strong> and&nbsp;add</p>
+<div class="highlight"><pre><span></span>PasswordAuthentication no
+</pre></div>
+<p>After a restart of the ssh server all was good in the&nbsp;world.</p>
+<p>Heck, I was so happy that I managed to get everything running that I even made an excited tweet that would prove to be a bit too prescient for my&nbsp;taste.</p>
+<p align="center"><blockquote class="twitter-tweet"><p>Finally managed to get git to behave. I feel so victorious I&rsquo;d reinstall the server just to do it again. Which reminds me, need&nbsp;backups.</p>&mdash; Serban Constantin (@fuzzmz) <a data-datetime="2012-01-17T19:33:00+00:00" href="https://twitter.com/fuzzmz/status/159357579846365185">January17, 2012</a></blockquote></p>
+<script charset="utf-8" src="//platform.twitter.com/widgets.js"></script>
+<hr/>
+<h2 id="the-catalyst">The&nbsp;catalyst</h2>
+<p>Every time I logged in, the working directory was <strong>/root</strong> (and yes, I know that I shouldn&rsquo;t use root for my day to day business, but hey, that&rsquo;s why I disabled password authentication) and yet all of my work was done in <strong>/home</strong>. This in turn lead to a very frustrated Fuzz who sought to fix his&nbsp;problem.</p>
+<p>I mean, it couldn&rsquo;t be that hard to change the login directory, would it? Heck, Linux even gives you a simple way to do it&nbsp;through</p>
+<div class="highlight"><pre><span></span>$ usermod -d newdir loginname
+</pre></div>
+<p>So all I had to do was to run <em>usermod -d /home root</em> and I&rsquo;d be set. Little did I know&nbsp;that:</p>
+<ul>
+<li>there is an additional parameter, <em>-m</em> which moves the contents of the old dir to the new one (*cough*&nbsp;*cough*);</li>
+<li>you can&rsquo;t run the command for the user you&rsquo;re currently logged in&nbsp;with.</li>
+</ul>
+<p>This meant that I had to search for an alternative: it was changing the directory directly in the <strong>/etc/passwd</strong> file, and so I&nbsp;did.</p>
+<p>And things were&nbsp;good!</p>
+<hr/>
+<h2 id="there-are-no-keys-to-this-castle">There are no keys to this&nbsp;castle</h2>
+<p>A short time passes after changing the passwd file and I decide to do a logout and log back&nbsp;in.</p>
+<div class="highlight"><pre><span></span>Permission denied <span class="o">(</span>publickey<span class="o">)</span>.
+</pre></div>
+<p><span class="caps">OK</span>, this isn&rsquo;t good, this isn&rsquo;t good at&nbsp;all!</p>
+<p>Remember that -m I told you about? Yeah, the one that moves the contents of the old login directory to the new one; well, one of the things it moves is the <strong>.ssh</strong> folder which contains the authorized_keys&nbsp;file.</p>
+<p>What&rsquo;s so special about that file? Well, it holds the list of rsa keys which are allowed to access the server. Think of them as the keys that open your house door in the absence of people inside (the password, which I disabled) to open the door for&nbsp;you.</p>
+<p>In&nbsp;short:</p>
+<p align="center"><blockquote class="twitter-tweet"><p>Just as I got everything running the way I wanted I managed to lock myself out of the server. Fucking piece of&nbsp;shit!</p>&mdash; Serban Constantin (@fuzzmz) <a data-datetime="2012-01-17T20:29:00+00:00" href="https://twitter.com/fuzzmz/status/159371687379484675">January17, 2012</a></blockquote></p>
+<script charset="utf-8" src="//platform.twitter.com/widgets.js"></script>
+<p>Fortunately, while bitching on Twitter about the whole situation <a href="http://twitter.com/Kephu">Keph</a> reminds me that I still have access to the server&hellip;&nbsp;somewhat.</p>
+<hr/>
+<h2 id="irc-bouncer-to-the-rescue"><span class="caps">IRC</span> bouncer to the&nbsp;rescue!</h2>
+<p>One of the purposes of that <span class="caps">VPS</span> is to run <a href="http://wiki.znc.in"><span class="caps">ZNC</span></a>, an <span class="caps">IRC</span> bouncer which has some nice capabilities, one of them being a module called <em>shell</em> which allow you to type commands into a query as if it were a&nbsp;terminal.</p>
+<p><span class="dquo">&ldquo;</span>Yay, I am saved!&rdquo; thought I, without realizing that I had <span class="caps">ZNC</span> run under a non-admin account, exactly because of the shell module. The reasoning is that in case someone hacks my <span class="caps">IRC</span> password they won&rsquo;t be able to do any damage as, either by loging in the server directly through ssh or via the shell&nbsp;module.</p>
+<p>On the upside, even though I couldn&rsquo;t do much I could at least write an authorized_keys file for that user and get ssh access to the server; this in turn meant that I could back up a portion of my data in case I had to reinstall the&nbsp;server.</p>
+<hr/>
+<h2 id="admin-panel-what-admin-panel">Admin panel? What admin&nbsp;panel?</h2>
+<p>Of course, people both in <span class="caps">IRC</span> and on Twitter told me to see if I can get access to the server via the admin panel provided by the <span class="caps">VPS</span> host. Fortunately for me, they did indeed provide such access via a serial&nbsp;console.</p>
+<p><img class="img-responsive" src="/images/imported-old/magic-button.PNG" style="float:left; padding-right:10px"/></p>
+<p>I had seen this magic button and tried it even before embarking on the amazing <span class="caps">IRC</span>-hackathon journey, I, in my eternal wisdom, decided to replace the default username in the dialogue that popped up when I pressed it with root, which in turn led me to the same &ldquo;Permission denied(publickey)&rdquo; error&nbsp;message.</p>
+<p>This time though, this time it would be different! This time I would leave the default username and gaze upon the wonders&nbsp;of</p>
+<div class="highlight"><pre><span></span>root@qwerty:~#
+</pre></div>
+<p>Yes, I was in and&nbsp;victorious!</p>
+<p>I quickly created a .ssh/authorized_keys file under my new login directory and started working on my backup&nbsp;strategy.</p>
+<p>But about that, in the next blog&nbsp;update.</p>
+                </div>
+                <footer class="text-right">
+                    <p>- fuzzmz</p>
+                </footer>
+    <script data-isso="//discuss.fuzz.me.uk/"
+            data-isso-avatar="false"
+            src="//discuss.fuzz.me.uk/js/embed.min.js"></script>
+
+    <section id="isso-thread"></section>
+            </div>
+    <div id="scrollspy">
+        <div class="col-lg-3 nav nav-stacked hidden-xs hidden-sm" data-spy="affix" data-offset-top="135">
+            <div id="toc"><ul><li><a class="toc-href" href="#" title="Lockout: no pass, no&nbsp;key">Lockout: no pass, no&nbsp;key</a><ul><li><a class="toc-href" href="#a-foreword" title="A&nbsp;foreword">A&nbsp;foreword</a></li><li><a class="toc-href" href="#the-idea" title="The&nbsp;idea">The&nbsp;idea</a></li><li><a class="toc-href" href="#the-catalyst" title="The&nbsp;catalyst">The&nbsp;catalyst</a></li><li><a class="toc-href" href="#there-are-no-keys-to-this-castle" title="There are no keys to this&nbsp;castle">There are no keys to this&nbsp;castle</a></li><li><a class="toc-href" href="#irc-bouncer-to-the-rescue" title="IRC bouncer to the&nbsp;rescue!">IRC bouncer to the&nbsp;rescue!</a></li><li><a class="toc-href" href="#admin-panel-what-admin-panel" title="Admin panel? What admin&nbsp;panel?">Admin panel? What admin&nbsp;panel?</a></li></ul></li></ul></div>
+        </div>
+    </div>
+        </div>
+    </article>
+</section>
+<footer>
+    <hr>
+    <div class="row">
+        <div class="col-xs-4 text-left">
+            <p><small>
+                ramblings on tech, life, and randomness by Serban Constantin
+            </small></p>
+        </div>
+        <div class="col-xs-5 text-right">
+            <p><small>
+                Built by <a href="http://docs.getpelican.com/en/latest">Pelican</a> / <a href="https://github.com/ingwinlu/pelican-twitchy">pelican-twitchy</a>
+                &middot;                    &copy; 2016 fuzzmz
+            </small></p>
+        </div>
+    </div>
+</footer>            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+    <!-- jQuery Version 1.11.2 -->
+    <script src="https://fuzz.me.uk/theme/js/jquery-1.11.2.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="https://fuzz.me.uk/theme/js/bootstrap.min.js"></script>
+    <!-- twitchy Script -->
+    <script src="https://fuzz.me.uk/theme/js/pelican_twitchy.min.js"></script>
+
+</body>
+</html>

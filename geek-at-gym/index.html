@@ -1,0 +1,458 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script type="text/javascript">
+        var host = "fuzz.me.uk";
+        if ((host == window.location.host) && (window.location.protocol != "https:"))
+            window.location.protocol = "https";
+    </script>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="author" content="fuzzmz" />
+        <meta name="keywords" content="python,coding" />
+        <meta name="description" content="What happens when a geek wants to go to a specific gym class but always finds it fully booked? Well, I decided to abuse their reservation page and write a quick and dirty script which tries to make a reservation. Before we dive in the code I want to warn ..." />
+
+<!-- Open Graph tags -->
+<meta property="og:site_name" content="Fuzzmz | ramblings on tech, life, and randomness by Serban Constantin"/>
+<meta property="twitter:site" content="@fuzzmz"/>
+<meta property="twitter:creator" content="@fuzzmz"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="Geek at the gym"/>
+    <meta property="og:url" content="https://fuzz.me.uk/geek-at-gym/"/>
+    <meta property="og:description" content="What happens when a geek wants to go to a specific gym class but always finds it fully booked? Well, I decided to abuse their reservation page and write a quick and dirty script which tries to make a reservation. Before we dive in the code I want to warn ..."/>
+    <meta property="article:published_time" content="2015-01-18" />
+    <meta property="article:section" content="debug" />
+        <meta property="article:tag" content="python" />
+        <meta property="article:tag" content="coding" />
+        <meta property="article:author" content="fuzzmz" />
+        <meta property="twitter:card" content="summary" />
+
+    <title>Geek at the gym - Fuzzmz | ramblings on tech, life, and randomness by Serban Constantin</title>
+
+        <link rel="stylesheet" href="https://fuzz.me.uk/theme/css/bootstrap.sandstone.min.css" type="text/css"/>
+
+    <link href="https://fuzz.me.uk/theme/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="https://fuzz.me.uk/theme/css/pygments/colorful.css" rel="stylesheet" />
+    
+        <link href="https://fuzz.me.uk/theme/css/typogrify.css" rel="stylesheet" />
+    <link href="https://fuzz.me.uk/theme/css/pelican-twitchy.min.css" rel="stylesheet" />
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <!-- Feeds -->
+</head>
+<body data-spy="scroll" data-target="#scrollspy">
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper-small" class="twitchy-background">
+            <ul id="accordion-small" class="sidebar-nav sidebar-nav-small">
+                <li>
+        <a href="https://fuzz.me.uk" title="Fuzzmz | ramblings on tech, life, and randomness by Serban Constantin" class="collapsed">
+            <span class="glyphicon glyphicon-home"></span>
+        </a>
+    </li>
+                <li class="nav-divider"></li>
+                <li>
+        <a href="https://fuzz.me.uk/archives.html" title="Recent Articles" class="collapsed">
+            <span class="glyphicon glyphicon-th-list"></span>
+        </a>
+    </li>
+                
+                <li class="nav-divider"></li>
+                <li id="share-small">
+                    <a data-toggle="collapse" data-parent="#accordion-small" href="#collapse-share-small" title="Share" class="collapsed">
+                        <i class="fa fa-share-alt padding-small"></i>
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-share-small" class="collapse ">
+                    <li>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=https://fuzz.me.uk/geek-at-gym/" title="Share via Facebook" target="popup">
+                            <i class="fa fa-facebook-square padding-small"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/share?url=https://fuzz.me.uk/geek-at-gym/" title="Share via Google+" target="popup">
+                            <i class="fa fa-google-plus padding-small"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" title="Share via Twitter" target="popup">
+                            <i class="fa fa-twitter-square padding-small"></i>
+                        </a>
+                    </li>
+                </ul></li>
+                <li class="nav-divider"></li>
+                <li>
+                    <a data-toggle="collapse" data-parent="#accordion-small" href="#collapse-social-small" title="Social" class="collapsed">
+                        <i class="fa fa-users padding-small"></i>
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-social-small" class="collapse ">
+                    <li>
+                        <a href="https://github.com/fuzzmz" title="GitHub"><i class="fa fa-github-square fa-lg padding-small"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/+serbanconstantin" title="Google+"><i class="fa fa-google-plus-square fa-lg padding-small"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://feeds.feedburner.com/fuzzmeuk" title="RSS"><i class="fa fa-rss-square fa-lg padding-small"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/fuzzmz" title="Twitter"><i class="fa fa-twitter-square fa-lg padding-small"></i></a>
+                    </li>
+                </ul></li>
+                <li class="nav-divider"></li>
+                <li>
+        <a href="#" title="Back to top" class="collapsed">
+            <span class="fa fa-arrow-up"></span>
+        </a>
+    </li>
+            </ul>
+        </div>
+        <div id="sidebar-wrapper" class="twitchy-background">
+            <ul id="accordion" class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="https://fuzz.me.uk/">
+                            <span class="glyphicon glyphicon-home padding-small"></span>
+                            Home
+                    </a>
+                </li>
+                    <li class="nav-divider"></li>
+                    <li>
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse-latest">
+                            <span class="glyphicon glyphicon-th-list padding-small"></span>
+                            Recent Articles
+                        </a>
+                    </li>
+                    <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
+                        <li class="">
+                            <a class="hide-overflow" href="https://fuzz.me.uk/burn-it-all/" title="Burn it all">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Burn it all
+                            </a>
+                        </li>
+                        <li class="">
+                            <a class="hide-overflow" href="https://fuzz.me.uk/https-now-green/" title="Green URL bar">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Green URL bar
+                            </a>
+                        </li>
+                        <li class="">
+                            <a class="hide-overflow" href="https://fuzz.me.uk/making-private-tests-public/" title="Making private tests public">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Making private tests public
+                            </a>
+                        </li>
+                        <li class="">
+                            <a class="hide-overflow" href="https://fuzz.me.uk/google-photos-shared-albums-annoyances/" title="Google Photos Shared Albums annoyances">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Google Photos Shared Albums annoyances
+                            </a>
+                        </li>
+                        <li class="">
+                            <a class="hide-overflow" href="https://fuzz.me.uk/oh-kernel-my-kernel/" title="Oh kernel, my kernel">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Oh kernel, my kernel
+                            </a>
+                        </li>
+                    <li>
+                        <a href="https://fuzz.me.uk/archives.html">
+                            <i class="fa fa-arrow-right padding-small"></i>
+                            More
+                        </a>
+                    </li>
+                    </ul></li>
+                <li class="nav-divider"></li>
+                <li id="share">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-share" title="Share" class="collapsed">
+                        <i class="fa fa-share-alt padding-small"></i>
+                        Share
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-share" class="sidebar_submenu collapse ">
+                    <li>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=https://fuzz.me.uk/geek-at-gym/" target="popup">
+                            <i class="fa fa-facebook-square padding-small"></i>
+                            Facebook
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/share?url=https://fuzz.me.uk/geek-at-gym/" target="popup">
+                            <i class="fa fa-google-plus padding-small"></i>
+                            Google+
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" target="popup">
+                            <i class="fa fa-twitter-square padding-small"></i>
+                            Twitter
+                        </a>
+                    </li>
+                </ul></li>
+                <li class="nav-divider"></li>
+                <li>
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-social">
+                        <i class="fa fa-users padding-small"></i>
+                        Contact
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-social" class="sidebar_submenu collapse ">
+                    <li>
+                        <a href="https://github.com/fuzzmz" title="GitHub">
+                            <i class="fa fa-github-square fa-lg padding-small"></i>
+                            GitHub
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/+serbanconstantin" title="Google+">
+                            <i class="fa fa-google-plus-square fa-lg padding-small"></i>
+                            Google+
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://feeds.feedburner.com/fuzzmeuk" title="RSS">
+                            <i class="fa fa-rss-square fa-lg padding-small"></i>
+                            RSS
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/fuzzmz" title="Twitter">
+                            <i class="fa fa-twitter-square fa-lg padding-small"></i>
+                            Twitter
+                        </a>
+                    </li>
+                </ul></li>
+                
+                
+                <li class="nav-divider"></li>
+                <li>
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-categories">
+                        <i class="fa fa-folder-open padding-small"></i>
+                        Categories
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-categories" class="sidebar_submenu collapse ">
+                    <li class="active">
+                        <a href="https://fuzz.me.uk/category/debug.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            debug
+                            <span class="badge pull-right categorybadge">14</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="https://fuzz.me.uk/category/how-to.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            how-to
+                            <span class="badge pull-right categorybadge">7</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="https://fuzz.me.uk/category/misc.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            misc
+                            <span class="badge pull-right categorybadge">31</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="https://fuzz.me.uk/category/ux.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            ux
+                            <span class="badge pull-right categorybadge">4</span>
+                        </a>
+                    </li>
+                </ul></li>
+                
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+        <!-- open/close sidebar -->
+        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">
+            <span id="right-arrow" class="glyphicon glyphicon-chevron-right"  title="expand sidebar"></span>
+            <span id="left-arrow" class="glyphicon glyphicon-chevron-left" title="minimize sidebar"></span>
+        </a>
+       <!-- /open/close sidebar -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+<section id="content">
+    <article>
+        <div class="row">
+            <div class="col-lg-9">
+                <header class="page-header">
+                    <h1>
+                        <a href="https://fuzz.me.uk/geek-at-gym/"
+                           rel="bookmark"
+                           title="Permalink to Geek at the gym">
+                            Geek at the&nbsp;gym
+                        </a>
+                        <small>
+<div class="post-info">
+    <div class="publish-info-block">
+        <small>
+            <span class="published">
+                <i class="fa fa-calendar padding-small"></i><time datetime="2015-01-18T21:22:00+02:00"> 2015-01-18</time>
+            </span>
+            <span class="category">
+                <i class="fa fa-folder-open padding-small"></i><a href="https://fuzz.me.uk/category/debug.html">debug</a>
+            </span>
+            <span class="tags">
+                <i class="fa fa-tags padding-small"></i>
+                <a href="https://fuzz.me.uk/tag/python.html">python</a> /                 <a href="https://fuzz.me.uk/tag/coding.html">coding</a>            </span>
+        </small>
+    </div>
+</div><!-- /.post-info -->                        </small>
+                    </h1>
+                </header>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="entry-content">
+                    <p>What happens when a geek wants to go to a specific gym class but always finds it fully booked? Well, I decided to abuse their reservation page and write a quick and dirty script which tries to make a&nbsp;reservation.</p>
+<p>Before we dive in the code I want to warn you again that this was a very quick project built for one specific gym class, so there are a lot of hardcoded things in it. It could use a clean-up and better structure, but hey, it worked for what I needed it&nbsp;for.</p>
+<hr/>
+<h1 id="the-flow">The&nbsp;flow</h1>
+<p>The flow of the script is the&nbsp;following:</p>
+<ol>
+<li><code>login</code> - based on the user email and pin log in to the&nbsp;site</li>
+<li><code>grab session cookie</code> - the reservation request requires a valid session&nbsp;cookie</li>
+<li><code>make reservation</code> - actually make the reservation for the specific&nbsp;class</li>
+</ol>
+<p>Basically, this can be written&nbsp;as:</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">memberemail</span> <span class="o">=</span> <span class="s2">"random@random.com"</span>
+    <span class="n">memberpin</span> <span class="o">=</span> <span class="mi">1234</span>
+    <span class="n">classid</span> <span class="o">=</span> <span class="mi">7890</span>
+    <span class="n">cookie</span> <span class="o">=</span> <span class="n">login</span><span class="p">(</span><span class="n">memberemail</span><span class="p">,</span> <span class="n">memberpin</span><span class="p">)</span>
+
+    <span class="n">make_reservation</span><span class="p">(</span><span class="n">cookie</span><span class="p">,</span> <span class="n">classid</span><span class="p">,</span> <span class="n">memberemail</span><span class="p">,</span> <span class="n">memberpin</span><span class="p">)</span>
+</pre></div>
+<p>The <code>classid</code> for a specific class can be found by going to the reservation page for your particular gym location and looking at the source code. Also note the <code>centerid</code> string corresponding to your&nbsp;gym.</p>
+<p>For example, the monday morning cycling class has the following&nbsp;info:</p>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"hidden"</span> <span class="na">value</span><span class="o">=</span><span class="s">"37752"</span> <span class="na">name</span><span class="o">=</span><span class="s">"classId"</span><span class="p">&gt;&lt;/</span><span class="nt">input</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"hidden"</span> <span class="na">value</span><span class="o">=</span><span class="s">"402"</span> <span class="na">name</span><span class="o">=</span><span class="s">"centerId"</span><span class="p">&gt;&lt;/</span><span class="nt">input</span><span class="p">&gt;</span>
+</pre></div>
+<p>The easiest way to get this info is to just search for <code>classId</code> in the page source and match that with the class you want to&nbsp;attend.</p>
+<hr/>
+<h2 id="1-login">1.&nbsp;Login</h2>
+<p>In order to log in to the site we perform a post request to <code>http://www.worldclass.ro/includes/ajax/login-user.php</code> with the username and password and from the response we steal the session&nbsp;cookie.</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">urllib</span>
+<span class="kn">import</span> <span class="nn">urllib2</span>
+</pre></div>
+<p>We need the <code>urllib</code> and <code>urllib2</code> libraries in order to perform requests against the Worldclass gym&nbsp;website.</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">login</span><span class="p">(</span><span class="n">memberemail</span><span class="p">,</span> <span class="n">memberpin</span><span class="p">):</span>
+    <span class="n">page</span> <span class="o">=</span> <span class="s2">"http://www.worldclass.ro/includes/ajax/login-user.php"</span>
+    <span class="n">email</span> <span class="o">=</span> <span class="n">memberemail</span>
+    <span class="n">pin</span> <span class="o">=</span> <span class="n">memberpin</span>
+</pre></div>
+<p>Our login function in which we define the login page url and the user email and password (pin) used to&nbsp;authenticate.</p>
+<p>In order to get the session cookie we need to pass the email and pin to the login page. To do this we uncode them and do a post request against the&nbsp;page.</p>
+<div class="highlight"><pre><span></span>    <span class="n">raw_params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'email'</span><span class="p">:</span> <span class="n">email</span><span class="p">,</span> <span class="s1">'pin'</span><span class="p">:</span> <span class="n">pin</span><span class="p">}</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">urlencode</span><span class="p">(</span><span class="n">raw_params</span><span class="p">)</span> <span class="c1"># encode the params</span>
+    <span class="n">req</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">page</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span> <span class="c1"># form the request</span>
+    <span class="n">page</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">req</span><span class="p">)</span> <span class="c1"># open the page with our parameters</span>
+</pre></div>
+<hr/>
+<h2 id="2-get-session-cookie">2. Get session&nbsp;cookie</h2>
+<p>The post returns more than just what we need (the session id cookie), so we&rsquo;ll need to perform some aditional steps to get&nbsp;it.</p>
+<div class="highlight"><pre><span></span>    <span class="n">cookies</span> <span class="o">=</span> <span class="n">page</span><span class="o">.</span><span class="n">info</span><span class="p">()[</span><span class="s1">'Set-Cookie'</span><span class="p">]</span> <span class="c1"># grab all returned cookies</span>
+    <span class="n">page</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">cookies</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">'='</span><span class="p">)</span> <span class="c1"># find start of the PHPSESSID cookie</span>
+    <span class="n">end</span> <span class="o">=</span> <span class="n">cookies</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">' '</span><span class="p">)</span> <span class="c1"># find the end of the PHPSESSID cookie</span>
+    <span class="k">return</span> <span class="n">cookies</span><span class="p">[</span><span class="n">start</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:</span><span class="n">end</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="c1"># return our session cookie</span>
+</pre></div>
+<hr/>
+<h2 id="3-make-reservation">3. Make&nbsp;reservation</h2>
+<p>Now that we have the session cookie we can make the reservation to our desired class (defined by the <code>classid</code> variable).</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_reservation</span><span class="p">(</span><span class="n">cookie</span><span class="p">,</span> <span class="n">classid</span><span class="p">,</span> <span class="n">email</span><span class="p">,</span> <span class="n">pin</span><span class="p">):</span>
+    <span class="n">page</span> <span class="o">=</span> <span class="s1">'http://www.worldclass.ro/includes/ajax/_book_class.php'</span>
+    <span class="n">classid</span> <span class="o">=</span> <span class="n">classid</span>
+    <span class="n">centerid</span> <span class="o">=</span> <span class="mi">402</span>
+    <span class="n">memberemail</span> <span class="o">=</span> <span class="n">email</span>
+    <span class="n">memberpin</span> <span class="o">=</span> <span class="n">pin</span>
+    <span class="n">outlook</span> <span class="o">=</span> <span class="s2">"undefined"</span>
+    <span class="n">clubname</span> <span class="o">=</span> <span class="s2">"Health Academy at the Grand"</span>
+</pre></div>
+<p>As you can see, the request for the booking page needs a bit more information than the login one. The only things that you should change directly are the <code>centerid</code> and <code>clubname</code> variables.</p>
+<p>Once this is done we can start building our&nbsp;request:</p>
+<div class="highlight"><pre><span></span>    <span class="n">raw_params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'classId'</span><span class="p">:</span> <span class="n">classid</span><span class="p">,</span>
+                  <span class="s1">'centerId'</span><span class="p">:</span> <span class="n">centerid</span><span class="p">,</span>
+                  <span class="s1">'memberEmail'</span><span class="p">:</span> <span class="n">memberemail</span><span class="p">,</span>
+                  <span class="s1">'memberPin'</span><span class="p">:</span> <span class="n">memberpin</span><span class="p">,</span>
+                  <span class="s1">'outlook'</span><span class="p">:</span> <span class="n">outlook</span><span class="p">,</span>
+                  <span class="s1">'clubName'</span><span class="p">:</span> <span class="n">clubname</span><span class="p">}</span>
+</pre></div>
+<p>Before performing the request we need to also add the session cookie to prove that we&rsquo;re indeed an actual user; after that we can perform the&nbsp;request.</p>
+<div class="highlight"><pre><span></span>    <span class="n">cookies</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">urlencode</span><span class="p">({</span><span class="s1">'PHPSESSID'</span><span class="p">:</span> <span class="n">cookie</span><span class="p">})</span> <span class="c1"># encode the cookie</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">urlencode</span><span class="p">(</span><span class="n">raw_params</span><span class="p">)</span> <span class="c1"># encode the parameters</span>
+    <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'Cookie'</span><span class="p">:</span> <span class="n">cookies</span><span class="p">}</span> <span class="c1"># add our cookie to the request header</span>
+
+    <span class="n">req</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">page</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span> <span class="c1"># form our request</span>
+    <span class="n">page</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">req</span><span class="p">)</span> <span class="c1"># perform the reqest</span>
+    <span class="k">print</span> <span class="n">page</span><span class="o">.</span><span class="n">read</span><span class="p">()</span> <span class="c1"># print the output to see if things are ok</span>
+</pre></div>
+<p>That&rsquo;s it. Now all you have to do is put this script in crontab to be run every night starting from a fwe minutes before the bookings open until a few minutes after they&nbsp;start.</p>
+<hr/>
+<h1 id="todo-and-code-repository_1"><span class="caps">TODO</span> and <i class="fa fa-github"></i> code&nbsp;repository</h1>
+<p>The script could be improved to simplify ease of use. The following changes could make things&nbsp;easier:</p>
+<ol>
+<li>Automatically match the <code>classid</code> and <code>centerid</code> based on user selection from a list instead of having the user look in the page source&nbsp;code;</li>
+<li>Check if the booking was succesful and if not try&nbsp;again;</li>
+<li>Instead of relying on the crontab/task scheduler to run the script every x minutes, move that logic in the script. That way it just needs to be started once and it&rsquo;ll keep running and retrying until the reservation is correct or a set timeout is&nbsp;reached.</li>
+</ol>
+<p>Feel free to fork and submit pull requests. You can find the code on <a href="https://github.com/fuzzmz/WorldclassGymBooking"><i class="fa fa-github"></i>fuzzmz/WorldclassGymBooking</a>.</p>
+                </div>
+                <footer class="text-right">
+                    <p>- fuzzmz</p>
+                </footer>
+    <script data-isso="//discuss.fuzz.me.uk/"
+            data-isso-avatar="false"
+            src="//discuss.fuzz.me.uk/js/embed.min.js"></script>
+
+    <section id="isso-thread"></section>
+            </div>
+    <div id="scrollspy">
+        <div class="col-lg-3 nav nav-stacked hidden-xs hidden-sm" data-spy="affix" data-offset-top="135">
+            <div id="toc"><ul><li><a class="toc-href" href="#" title="Geek at the&nbsp;gym">Geek at the&nbsp;gym</a><ul><li><a class="toc-href" href="#the-flow" title="The&nbsp;flow">The&nbsp;flow</a><ul><li><a class="toc-href" href="#1-login" title="1.&nbsp;Login">1.&nbsp;Login</a></li><li><a class="toc-href" href="#2-get-session-cookie" title="2. Get session&nbsp;cookie">2. Get session&nbsp;cookie</a></li><li><a class="toc-href" href="#3-make-reservation" title="3. Make&nbsp;reservation">3. Make&nbsp;reservation</a></li></ul></li><li><a class="toc-href" href="#todo-and-code-repository_1" title="TODO and  code&nbsp;repository">TODO and  code&nbsp;repository</a></li></ul></li></ul></div>
+        </div>
+    </div>
+        </div>
+    </article>
+</section>
+<footer>
+    <hr>
+    <div class="row">
+        <div class="col-xs-4 text-left">
+            <p><small>
+                ramblings on tech, life, and randomness by Serban Constantin
+            </small></p>
+        </div>
+        <div class="col-xs-5 text-right">
+            <p><small>
+                Built by <a href="http://docs.getpelican.com/en/latest">Pelican</a> / <a href="https://github.com/ingwinlu/pelican-twitchy">pelican-twitchy</a>
+                &middot;                    &copy; 2016 fuzzmz
+            </small></p>
+        </div>
+    </div>
+</footer>            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+    <!-- jQuery Version 1.11.2 -->
+    <script src="https://fuzz.me.uk/theme/js/jquery-1.11.2.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="https://fuzz.me.uk/theme/js/bootstrap.min.js"></script>
+    <!-- twitchy Script -->
+    <script src="https://fuzz.me.uk/theme/js/pelican_twitchy.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,416 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script type="text/javascript">
+        var host = "fuzz.me.uk";
+        if ((host == window.location.host) && (window.location.protocol != "https:"))
+            window.location.protocol = "https";
+    </script>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="author" content="fuzzmz" />
+        <meta name="keywords" content="devops,rants" />
+        <meta name="description" content="Hi, I’m Fuzzmz and I part of my job description is software build and release engineer. If you’ve recently played with CodeWarrior Development Studio for QorIQ LS series for ARM v7 ISA or for Power Architecture you should know that the final product builds were done by me ..." />
+
+<!-- Open Graph tags -->
+<meta property="og:site_name" content="Fuzzmz | ramblings on tech, life, and randomness by Serban Constantin"/>
+<meta property="twitter:site" content="@fuzzmz"/>
+<meta property="twitter:creator" content="@fuzzmz"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="Rants of a platform engineer"/>
+    <meta property="og:url" content="https://fuzz.me.uk/rants-of-a-platform-engineer/"/>
+    <meta property="og:description" content="Hi, I’m Fuzzmz and I part of my job description is software build and release engineer. If you’ve recently played with CodeWarrior Development Studio for QorIQ LS series for ARM v7 ISA or for Power Architecture you should know that the final product builds were done by me ..."/>
+    <meta property="article:published_time" content="2014-10-24" />
+    <meta property="article:section" content="misc" />
+        <meta property="article:tag" content="devops" />
+        <meta property="article:tag" content="rants" />
+        <meta property="article:author" content="fuzzmz" />
+        <meta property="twitter:card" content="summary" />
+
+    <title>Rants of a platform engineer - Fuzzmz | ramblings on tech, life, and randomness by Serban Constantin</title>
+
+        <link rel="stylesheet" href="https://fuzz.me.uk/theme/css/bootstrap.sandstone.min.css" type="text/css"/>
+
+    <link href="https://fuzz.me.uk/theme/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="https://fuzz.me.uk/theme/css/pygments/colorful.css" rel="stylesheet" />
+    
+        <link href="https://fuzz.me.uk/theme/css/typogrify.css" rel="stylesheet" />
+    <link href="https://fuzz.me.uk/theme/css/pelican-twitchy.min.css" rel="stylesheet" />
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <!-- Feeds -->
+</head>
+<body data-spy="scroll" data-target="#scrollspy">
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper-small" class="twitchy-background">
+            <ul id="accordion-small" class="sidebar-nav sidebar-nav-small">
+                <li>
+        <a href="https://fuzz.me.uk" title="Fuzzmz | ramblings on tech, life, and randomness by Serban Constantin" class="collapsed">
+            <span class="glyphicon glyphicon-home"></span>
+        </a>
+    </li>
+                <li class="nav-divider"></li>
+                <li>
+        <a href="https://fuzz.me.uk/archives.html" title="Recent Articles" class="collapsed">
+            <span class="glyphicon glyphicon-th-list"></span>
+        </a>
+    </li>
+                
+                <li class="nav-divider"></li>
+                <li id="share-small">
+                    <a data-toggle="collapse" data-parent="#accordion-small" href="#collapse-share-small" title="Share" class="collapsed">
+                        <i class="fa fa-share-alt padding-small"></i>
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-share-small" class="collapse ">
+                    <li>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=https://fuzz.me.uk/rants-of-a-platform-engineer/" title="Share via Facebook" target="popup">
+                            <i class="fa fa-facebook-square padding-small"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/share?url=https://fuzz.me.uk/rants-of-a-platform-engineer/" title="Share via Google+" target="popup">
+                            <i class="fa fa-google-plus padding-small"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" title="Share via Twitter" target="popup">
+                            <i class="fa fa-twitter-square padding-small"></i>
+                        </a>
+                    </li>
+                </ul></li>
+                <li class="nav-divider"></li>
+                <li>
+                    <a data-toggle="collapse" data-parent="#accordion-small" href="#collapse-social-small" title="Social" class="collapsed">
+                        <i class="fa fa-users padding-small"></i>
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-social-small" class="collapse ">
+                    <li>
+                        <a href="https://github.com/fuzzmz" title="GitHub"><i class="fa fa-github-square fa-lg padding-small"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/+serbanconstantin" title="Google+"><i class="fa fa-google-plus-square fa-lg padding-small"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://feeds.feedburner.com/fuzzmeuk" title="RSS"><i class="fa fa-rss-square fa-lg padding-small"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/fuzzmz" title="Twitter"><i class="fa fa-twitter-square fa-lg padding-small"></i></a>
+                    </li>
+                </ul></li>
+                <li class="nav-divider"></li>
+                <li>
+        <a href="#" title="Back to top" class="collapsed">
+            <span class="fa fa-arrow-up"></span>
+        </a>
+    </li>
+            </ul>
+        </div>
+        <div id="sidebar-wrapper" class="twitchy-background">
+            <ul id="accordion" class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="https://fuzz.me.uk/">
+                            <span class="glyphicon glyphicon-home padding-small"></span>
+                            Home
+                    </a>
+                </li>
+                    <li class="nav-divider"></li>
+                    <li>
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse-latest">
+                            <span class="glyphicon glyphicon-th-list padding-small"></span>
+                            Recent Articles
+                        </a>
+                    </li>
+                    <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
+                        <li class="">
+                            <a class="hide-overflow" href="https://fuzz.me.uk/burn-it-all/" title="Burn it all">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Burn it all
+                            </a>
+                        </li>
+                        <li class="">
+                            <a class="hide-overflow" href="https://fuzz.me.uk/https-now-green/" title="Green URL bar">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Green URL bar
+                            </a>
+                        </li>
+                        <li class="">
+                            <a class="hide-overflow" href="https://fuzz.me.uk/making-private-tests-public/" title="Making private tests public">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Making private tests public
+                            </a>
+                        </li>
+                        <li class="">
+                            <a class="hide-overflow" href="https://fuzz.me.uk/google-photos-shared-albums-annoyances/" title="Google Photos Shared Albums annoyances">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Google Photos Shared Albums annoyances
+                            </a>
+                        </li>
+                        <li class="">
+                            <a class="hide-overflow" href="https://fuzz.me.uk/oh-kernel-my-kernel/" title="Oh kernel, my kernel">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Oh kernel, my kernel
+                            </a>
+                        </li>
+                    <li>
+                        <a href="https://fuzz.me.uk/archives.html">
+                            <i class="fa fa-arrow-right padding-small"></i>
+                            More
+                        </a>
+                    </li>
+                    </ul></li>
+                <li class="nav-divider"></li>
+                <li id="share">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-share" title="Share" class="collapsed">
+                        <i class="fa fa-share-alt padding-small"></i>
+                        Share
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-share" class="sidebar_submenu collapse ">
+                    <li>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=https://fuzz.me.uk/rants-of-a-platform-engineer/" target="popup">
+                            <i class="fa fa-facebook-square padding-small"></i>
+                            Facebook
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/share?url=https://fuzz.me.uk/rants-of-a-platform-engineer/" target="popup">
+                            <i class="fa fa-google-plus padding-small"></i>
+                            Google+
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" target="popup">
+                            <i class="fa fa-twitter-square padding-small"></i>
+                            Twitter
+                        </a>
+                    </li>
+                </ul></li>
+                <li class="nav-divider"></li>
+                <li>
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-social">
+                        <i class="fa fa-users padding-small"></i>
+                        Contact
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-social" class="sidebar_submenu collapse ">
+                    <li>
+                        <a href="https://github.com/fuzzmz" title="GitHub">
+                            <i class="fa fa-github-square fa-lg padding-small"></i>
+                            GitHub
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/+serbanconstantin" title="Google+">
+                            <i class="fa fa-google-plus-square fa-lg padding-small"></i>
+                            Google+
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://feeds.feedburner.com/fuzzmeuk" title="RSS">
+                            <i class="fa fa-rss-square fa-lg padding-small"></i>
+                            RSS
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/fuzzmz" title="Twitter">
+                            <i class="fa fa-twitter-square fa-lg padding-small"></i>
+                            Twitter
+                        </a>
+                    </li>
+                </ul></li>
+                
+                
+                <li class="nav-divider"></li>
+                <li>
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-categories">
+                        <i class="fa fa-folder-open padding-small"></i>
+                        Categories
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-categories" class="sidebar_submenu collapse ">
+                    <li >
+                        <a href="https://fuzz.me.uk/category/debug.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            debug
+                            <span class="badge pull-right categorybadge">14</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="https://fuzz.me.uk/category/how-to.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            how-to
+                            <span class="badge pull-right categorybadge">7</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="https://fuzz.me.uk/category/misc.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            misc
+                            <span class="badge pull-right categorybadge">31</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="https://fuzz.me.uk/category/ux.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            ux
+                            <span class="badge pull-right categorybadge">4</span>
+                        </a>
+                    </li>
+                </ul></li>
+                
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+        <!-- open/close sidebar -->
+        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">
+            <span id="right-arrow" class="glyphicon glyphicon-chevron-right"  title="expand sidebar"></span>
+            <span id="left-arrow" class="glyphicon glyphicon-chevron-left" title="minimize sidebar"></span>
+        </a>
+       <!-- /open/close sidebar -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+<section id="content">
+    <article>
+        <div class="row">
+            <div class="col-lg-9">
+                <header class="page-header">
+                    <h1>
+                        <a href="https://fuzz.me.uk/rants-of-a-platform-engineer/"
+                           rel="bookmark"
+                           title="Permalink to Rants of a platform engineer">
+                            Rants of a platform&nbsp;engineer
+                        </a>
+                        <small>
+<div class="post-info">
+    <div class="publish-info-block">
+        <small>
+            <span class="published">
+                <i class="fa fa-calendar padding-small"></i><time datetime="2014-10-24T00:00:00+03:00"> 2014-10-24</time>
+            </span>
+            <span class="category">
+                <i class="fa fa-folder-open padding-small"></i><a href="https://fuzz.me.uk/category/misc.html">misc</a>
+            </span>
+            <span class="tags">
+                <i class="fa fa-tags padding-small"></i>
+                <a href="https://fuzz.me.uk/tag/devops.html">devops</a> /                 <a href="https://fuzz.me.uk/tag/rants.html">rants</a>            </span>
+        </small>
+    </div>
+</div><!-- /.post-info -->                        </small>
+                    </h1>
+                </header>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="entry-content">
+                    <p>Hi, I&rsquo;m Fuzzmz and I part of my job description is software build and release engineer. If you&rsquo;ve recently played with <a href="http://www.freescale.com/webapp/sps/site/prod_summary.jsp?code=CW-LS-ARM7">CodeWarrior Development Studio for QorIQ <span class="caps">LS</span> series for <span class="caps">ARM</span> v7 <span class="caps">ISA</span></a> or for Power Architecture you should know that the final product builds were done by&nbsp;me.</p>
+<p>This means that what I and the rest of my team does is handle the build process, where all components get integrated to form the final product, as well as handling the build and integration system. What follows are a few thoughts based on my experiences and struggles faced so far during my&nbsp;job.</p>
+<hr/>
+<p>I guess a nicer way to name my job would be <em>platform engineering</em>, as we are tasked with taking care of a part of the systems which power scalability, fault tolerance, and developer&nbsp;productivity.</p>
+<p>Please note though that the following bullet points aren&rsquo;t meant to apply to everyone, nor are all of them in use at my job, though we strive to make things as smooth as&nbsp;possible.</p>
+<p>So, without further ado, here are the guidelines we try to adhere&nbsp;to:</p>
+<ol>
+<li>Systems are provisioned via&nbsp;code</li>
+<li>Engineers with production responsibilities are embedded with feature&nbsp;teams</li>
+<li>Monitoring and alert configuration is centralized and easily accessible to the people who need&nbsp;them</li>
+<li>Systems are self-healing without human&nbsp;involvement</li>
+<li>Everyday administration tasks are handled through automated&nbsp;systems</li>
+<li>Configuration data is stored in an auditable central&nbsp;repository</li>
+<li>Applications are presented with a fresh, consistent runtime regardless of deployment&nbsp;environment</li>
+<li>Any system that must be deployed more often than monthly does so faster than you can get a cup of&nbsp;coffee</li>
+</ol>
+<hr/>
+<h3 id="1-systems-are-provisioned-via-code">1. Systems are provisioned via&nbsp;code</h3>
+<p>This is the foundation of everything. Whether it&rsquo;s Chef or Puppet, bash scripts or even <span class="caps">VM</span> snapshots, every developer&rsquo;s time and skills should be more valuable than just manually provisioning stuff. Couple that with the inherent systems documentation that you get from reading Chef cookbooks for example and you&rsquo;ve got the foundational building block for everything else you do. You just shouldn&rsquo;t <em>have</em> time to do&nbsp;otherwise.</p>
+<hr/>
+<h3 id="2-engineers-with-production-responsibilities-are-embedded-with-feature-teams">2. Engineers with production responsibilities are embedded with feature&nbsp;teams</h3>
+<p>Despite having a team dedicated to shipping the final product (hi to all of the release engineering guys out there), they don&rsquo;t have time to ship everybody else&rsquo;s stuff,&nbsp;too.</p>
+<p>You hire smart people everywhere so who better to know the requirements, pitfalls and shortcuts in building their specific pieces of code? Give them ownership of their own deliverables and rely on the platform team to enable them with tooling and, if needed, assistance in making their deployments possible. This will ensure that they are always in the loop when it comes to the outcome of their builds and deliverable&nbsp;sanity.</p>
+<hr/>
+<h3 id="3-monitoring-and-alert-configuration-is-centralized-and-easily-accessible-to-the-people-who-need-them">3. Monitoring and alert configuration is centralized and easily accessible to the people who need&nbsp;them</h3>
+<p>Centralized logging and monitoring of system statistics has two major pluses: developer velocity and system self-documentation. <span class="caps">SSH</span> may be necessary in the odd edge case, but if somebody has to log into a machine just to read their logs, they&rsquo;re going to be slower when they do it or not do it at all. Make sure that your devs can readily know when something&rsquo;s wrong, or when a fault somewhere else in the .org might affect&nbsp;them.</p>
+<p>Also, every data point counts when it comes to logging, so having the record of Things That Have Needed Monitoring can help inform future&nbsp;decisions.</p>
+<hr/>
+<h3 id="4-systems-are-self-healing-without-human-involvement">4. Systems are self-healing without human&nbsp;involvement</h3>
+<p>Do you enjoy waking up to a log full of errors? Or emails from colleagues bitching that something isn&rsquo;t quite&nbsp;working?</p>
+<p>In a sane environment, the steps to recover from failure should be well-documented and extremely digital &mdash; you should be able to document them as a bunch of&nbsp;if-thens.</p>
+<p>Now, I&rsquo;m pretty sure a healthy environment already has lots of if-then processors lying around. They&rsquo;re called computers. You can rent one that can complete all the if-thens that most failures could ever need for two cents an hour in <span class="caps">AWS</span>. It&rsquo;s cheaper than having a meat processor doing the moral equivalent (and then calling you when he or she gets off-book) and more&nbsp;reliable.</p>
+<p>An issue that needs to be escalated out-of-hours to a developer should require a postmortem. Turn the results into Python and have it send you an email telling you what it <strong>did</strong>, not what you <em>need to do</em>. Then save the shouting, screaming and flailing around for when something is really&nbsp;wrong.</p>
+<hr/>
+<h3 id="5-everyday-administration-tasks-are-handled-through-automated-systems">5. Everyday administration tasks are handled through automated&nbsp;systems</h3>
+<p>I&rsquo;ve heard this item expressed in an even more aggressive manner: <em>no developer should need <span class="caps">SSH</span> access to a production system</em>. I think that&rsquo;s overkill. No matter how much monitoring you stack up, there are some issues that require getting in there and perturbing electrons&nbsp;directly.</p>
+<p>But everyday tasks? See point 4. You&rsquo;ve got if-then machines all over the place. Use&nbsp;them.</p>
+<hr/>
+<h3 id="6-configuration-data-is-stored-in-an-auditable-central-repository">6. Configuration data is stored in an auditable central&nbsp;repository</h3>
+<p>This should be pretty explicit. Your Chef or Puppet configs? Store them in git, or whatever else <span class="caps">DCVS</span> you want. Your build scripts? Git. Your per-app configs? Git. And so on and so&nbsp;forth.</p>
+<hr/>
+<h3 id="7-applications-are-presented-with-a-fresh-consistent-runtime-regardless-of-deployment-environment">7. Applications are presented with a fresh, consistent runtime regardless of deployment&nbsp;environment</h3>
+<p>Now, I also handle the installers for the products I cover. And let me tell you, installing on Linux is a bitch, especially when you can&rsquo;t use native packages and have lots and lots of&nbsp;dependencies.</p>
+<p>Granted, I&rsquo;d love nothing more than just offering a pre-configured <a href="https://www.docker.com/">Docker</a> container with all of our files and binaries in it, but we&rsquo;re still far away from that (the disadvantages of having an <span class="caps">IDE</span> which requires a <span class="caps">GUI</span> as opposed to a command line&nbsp;suite).</p>
+<p>There&rsquo;s nothing worse than plopped down on a machine that&rsquo;s been running for a year-plus, with who-knows-how-many missing patches that dev and test have. This is silly. Give every application a new sandbox and shed no tears when it gets blown away. And if a sandbox is not possible, then make sure that the environment is as close to your tested <em>standard</em> as&nbsp;possible.</p>
+<hr/>
+<h3 id="8-any-system-that-must-be-deployed-more-often-than-monthly-does-so-faster-than-you-can-get-a-cup-of-coffee">8. Any system that must be deployed more often than monthly does so faster than you can get a cup of&nbsp;coffee</h3>
+<p>Please note: this isn&rsquo;t an excuse for really slow coffee&nbsp;machines.</p>
+<p>Fast deploys are critical both for developer productivity and for production safety. Everybody knows that distractions cause many developers to lose their flow. Script everything, and test from time to&nbsp;time.</p>
+<hr/>
+<p><span class="caps">OK</span>, rant over. Not sure how to end this, so I&rsquo;ll just point you to the comments form&nbsp;bellow.</p>
+                </div>
+                <footer class="text-right">
+                    <p>- fuzzmz</p>
+                </footer>
+    <script data-isso="//discuss.fuzz.me.uk/"
+            data-isso-avatar="false"
+            src="//discuss.fuzz.me.uk/js/embed.min.js"></script>
+
+    <section id="isso-thread"></section>
+            </div>
+    <div id="scrollspy">
+        <div class="col-lg-3 nav nav-stacked hidden-xs hidden-sm" data-spy="affix" data-offset-top="135">
+            <div id="toc"><ul><li><a class="toc-href" href="#" title="Rants of a platform&nbsp;engineer">Rants of a platform&nbsp;engineer</a><ul><li><a class="toc-href" href="#1-systems-are-provisioned-via-code" title="1. Systems are provisioned via&nbsp;code">1. Systems are provisioned via&nbsp;code</a></li><li><a class="toc-href" href="#2-engineers-with-production-responsibilities-are-embedded-with-feature-teams" title="2. Engineers with production responsibilities are embedded with feature&nbsp;teams">2. Engineers with production responsibilities are embedded with feature&nbsp;teams</a></li><li><a class="toc-href" href="#3-monitoring-and-alert-configuration-is-centralized-and-easily-accessible-to-the-people-who-need-them" title="3. Monitoring and alert configuration is centralized and easily accessible to the people who need&nbsp;them">3. Monitoring and alert configuration is centralized and easily accessible to the people who need&nbsp;them</a></li><li><a class="toc-href" href="#4-systems-are-self-healing-without-human-involvement" title="4. Systems are self-healing without human&nbsp;involvement">4. Systems are self-healing without human&nbsp;involvement</a></li><li><a class="toc-href" href="#5-everyday-administration-tasks-are-handled-through-automated-systems" title="5. Everyday administration tasks are handled through automated&nbsp;systems">5. Everyday administration tasks are handled through automated&nbsp;systems</a></li><li><a class="toc-href" href="#6-configuration-data-is-stored-in-an-auditable-central-repository" title="6. Configuration data is stored in an auditable central&nbsp;repository">6. Configuration data is stored in an auditable central&nbsp;repository</a></li><li><a class="toc-href" href="#7-applications-are-presented-with-a-fresh-consistent-runtime-regardless-of-deployment-environment" title="7. Applications are presented with a fresh, consistent runtime regardless of deployment&nbsp;environment">7. Applications are presented with a fresh, consistent runtime regardless of deployment&nbsp;environment</a></li><li><a class="toc-href" href="#8-any-system-that-must-be-deployed-more-often-than-monthly-does-so-faster-than-you-can-get-a-cup-of-coffee" title="8. Any system that must be deployed more often than monthly does so faster than you can get a cup of&nbsp;coffee">8. Any system that must be deployed more often than monthly does so faster than you can get a cup of&nbsp;coffee</a></li></ul></li></ul></div>
+        </div>
+    </div>
+        </div>
+    </article>
+</section>
+<footer>
+    <hr>
+    <div class="row">
+        <div class="col-xs-4 text-left">
+            <p><small>
+                ramblings on tech, life, and randomness by Serban Constantin
+            </small></p>
+        </div>
+        <div class="col-xs-5 text-right">
+            <p><small>
+                Built by <a href="http://docs.getpelican.com/en/latest">Pelican</a> / <a href="https://github.com/ingwinlu/pelican-twitchy">pelican-twitchy</a>
+                &middot;                    &copy; 2016 fuzzmz
+            </small></p>
+        </div>
+    </div>
+</footer>            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+    <!-- jQuery Version 1.11.2 -->
+    <script src="https://fuzz.me.uk/theme/js/jquery-1.11.2.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="https://fuzz.me.uk/theme/js/bootstrap.min.js"></script>
+    <!-- twitchy Script -->
+    <script src="https://fuzz.me.uk/theme/js/pelican_twitchy.min.js"></script>
+
+</body>
+</html>
