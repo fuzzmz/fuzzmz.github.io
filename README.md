@@ -1,3 +1,3 @@
-This is the repository for [http://fuzz.me.uk](http://fuzz.me.uk)
+The repository moved to GitLab due to support of `HTTPS` on its GitLab Pages.
 
-For licensing information please visit the site. Contributions are always welcome.
+If you're interested in the source, you can find it [here](https://gitlab.com/fuzzmz/fuzzmz.gitlab.io).

@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 
 AUTHOR = 'fuzzmz'
 SITENAME = 'Fuzzmz | ramblings on tech, life, and randomness by Serban Constantin'
-SITEURL = 'https://fuzz.me.uk'
+SITEURL = 'https://fuzzzmz.github.io'
 SITESUBTITLE = 'ramblings on tech, life, and randomness by Serban Constantin'
 
 PATH = 'content'
@@ -27,11 +27,9 @@ AUTHOR_FEED_RSS = None
 
 #static
 STATIC_PATHS = ['images',
-                'extra/CNAME',
                 'extra/robots.txt',
                 'extra/favicon-terminal.ico']
 EXTRA_PATH_METADATA = {
-                        'extra/CNAME': {'path': 'CNAME'},
                         'extra/robots.txt': {'path': 'robots.txt'},
                         'extra/favicon-terminal.ico': {'path': 'favicon.ico'}
                       }
